@@ -46,6 +46,7 @@ set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan427
 set interfaces ge-0/0/1 description IF-2
 set interfaces ge-0/0/1 unit 0 family ethernet-switching port-mode access
 set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members vlan401
+
 set interfaces ge-0/0/2 description IF-3
 set interfaces ge-0/0/2 unit 0 family ethernet-switching port-mode access
 set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members vlan402
@@ -159,7 +160,7 @@ set routing-instances mgmt_junos routing-options static route 10.6.3.0/24 next-h
 set routing-instances mgmt_junos routing-options static route 10.6.4.0/24 next-hop 10.5.17.250
 
 ###
-### vlan
+### vlans
 ###
 
 set vlans vlan1 description DEFAULT_VLAN
@@ -170,6 +171,7 @@ set vlans vlan401 vlan-id 401
 
 set vlans vlan402 description "VLAN 402 seg"
 set vlans vlan402 vlan-id 402
+
 set vlans vlan403 description "VLAN 403 seg"
 set vlans vlan403 vlan-id 403
 set vlans vlan404 description "VLAN 404 seg"

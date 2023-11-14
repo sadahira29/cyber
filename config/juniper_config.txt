@@ -9,8 +9,8 @@ set system login user admin authentication encrypted-password "$1$ns3JOWfZ$Od3G2
 set system services ssh root-login deny
 set system services telnet
 set system syslog file messages authorization info
-set system ntp server 10.interfaces5.16.193 prefer
-set  ge-0/0/0 description IF-1
+set system ntp server 10.5.16.193 prefer
+set interfaces ge-0/0/0 description IF-1
 set interfaces ge-0/0/0 unit 0 family ethernet-switching port-mode trunk
 set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan92
 set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan401
