@@ -1,0 +1,325 @@
+Running configuration:
+
+; J9782A Configuration Editor; Created on release #YB.15.15.0014
+; Ver #06:04.18.63.ff.37.27:96
+hostname "HOSTNAME"
+dos-filter
+no cdp run
+no cdp enable 1-28
+max-vlans 512
+sntp server priority 1 10.5.16.193
+sntp server priority 2 10.5.17.193
+sntp server priority 3 10.5.18.193
+time timezone 540
+ip route 10.6.1.0 255.255.255.0 10.5.16.250
+ip route 10.6.2.0 255.255.255.0 10.5.17.250
+ip route 10.6.3.0 255.255.255.0 10.5.17.250
+ip route 10.6.4.0 255.255.255.0 10.5.17.250
+interface 1
+   name "IF-1"
+   exit
+interface 2
+   name "IF-2"
+   exit
+interface 3
+   name "IF-3"
+   exit
+interface 4
+   name "IF-4"
+   exit
+interface 5
+   name "IF-5"
+   exit
+interface 6
+   name "IF-6"
+   exit
+interface 7
+   name "IF-7"
+   exit
+interface 8
+   name "IF-8"
+   speed-duplex 100-full
+   exit
+interface 9
+   name "IF-9"
+   speed-duplex 100-full
+   exit
+interface 10
+   name "IF-10"
+   exit
+interface 11
+   name "IF-11"
+   speed-duplex 100-full
+   exit
+interface 12
+   name "IF-12"
+   speed-duplex 100-full
+   exit
+interface 13
+   name "IF-13"
+   speed-duplex 100-full
+   exit
+interface 14
+   name "IF-14"
+   speed-duplex 100-full
+   exit
+interface 15
+   name "IF-15"
+   speed-duplex 100-full
+   exit
+interface 16
+   name "IF-16"
+   exit
+interface 17
+   name "IF-17"
+   exit
+interface 18
+   name "IF-18"
+   exit
+interface 19
+   name "IF-19"
+   speed-duplex 100-full
+   exit
+interface 20
+   name "IF-20"
+   speed-duplex 100-full
+   exit
+interface 21
+   name "IF-21"
+   speed-duplex 100-full
+   exit
+interface 22
+   name "IF-22"
+   exit
+interface 23
+   name "IF-23"
+   exit
+interface 24
+   name "IF-24"
+   exit
+interface 25
+   name "IF-25"
+   speed-duplex 100-full
+   exit
+interface 26
+   name "IF-26"
+   speed-duplex 100-full
+   exit
+snmp-server community "SNMP-COM1" operator unrestricted
+snmp-server community "SNMP-COM2" operator
+snmp-server contact "SNMP-CONTACT" location "LOCATION1"
+vlan 1
+   name "DEFAULT_VLAN"
+   no untagged 2-23,25-26
+   untagged 1,24,27-28
+   no ip address
+   exit
+vlan 92
+   name "VLAN 92 seg"
+   untagged 23
+   tagged 1
+   ip address 10.5.17.194 255.255.248.0
+   exit
+vlan 401
+   name "VLAN 401 seg"
+   untagged 2
+   tagged 1,24
+   no ip address
+   exit
+vlan 402
+   name "VLAN 402 seg"
+   untagged 3
+   tagged 1,24
+   no ip address
+   exit
+vlan 403
+   name "VLAN 403 seg"
+   untagged 4
+   tagged 1,24
+   no ip address
+   exit
+vlan 404
+   name "VLAN 404 seg"
+   untagged 5
+   tagged 1,24
+   no ip address
+   exit
+vlan 405
+   name "VLAN 405 seg"
+   untagged 6
+   tagged 1,24
+   no ip address
+   exit
+vlan 406
+   name "VLAN 406 seg"
+   untagged 7
+   tagged 1,24
+   no ip address
+   exit
+vlan 407
+   name "VLAN 407 seg"
+   untagged 8
+   tagged 1,24
+   no ip address
+   exit
+vlan 409
+   name "VLAN 409 seg"
+   untagged 10
+   tagged 1,24
+   no ip address
+   exit
+vlan 410
+   name "VLAN 410 seg"
+   untagged 11
+   tagged 1,24
+   no ip address
+   exit
+vlan 411
+   name "VLAN 411 seg"
+   untagged 12
+   tagged 1,24
+   no ip address
+   exit
+vlan 412
+   name "VLAN 412 seg"
+   untagged 13
+   tagged 1,24
+   no ip address
+   exit
+vlan 413
+   name "VLAN 413 seg"
+   untagged 14
+   tagged 1,24
+   no ip address
+   exit
+vlan 414
+   name "VLAN 414 seg"
+   untagged 15
+   tagged 1,24
+   no ip address
+   exit
+vlan 416
+   name "VLAN 416 seg"
+   untagged 17
+   tagged 1,24
+   no ip address
+   exit
+vlan 417
+   name "VLAN 417 seg"
+   untagged 16
+   tagged 1,24
+   no ip address
+   exit
+vlan 418
+   name "VLAN 418 seg"
+   untagged 18
+   tagged 1,24
+   no ip address
+   exit
+vlan 419
+   name "VLAN 419 seg"
+   untagged 19
+   tagged 1,24
+   no ip address
+   exit
+vlan 420
+   name "VLAN 420 seg"
+   untagged 20
+   tagged 1,24
+   no ip address
+   exit
+vlan 421
+   name "VLAN 421 seg"
+   untagged 21
+   tagged 1,24
+   no ip address
+   exit
+vlan 422
+   name "VLAN 422 seg"
+   untagged 22
+   tagged 1,24
+   no ip address
+   exit
+vlan 423
+   name "VLAN 423 seg"
+   untagged 9
+   tagged 1,24
+   no ip address
+   exit
+vlan 424
+   name "VLAN 424 seg"
+   untagged 25
+   tagged 1,24
+   no ip address
+   exit
+vlan 427
+   name "VLAN 427 seg"
+   untagged 26
+   tagged 1,24
+   no ip address
+   exit
+management-vlan 92
+spanning-tree 1 admin-edge-port
+spanning-tree 1 root-guard bpdu-filter bpdu-protection
+spanning-tree 2 admin-edge-port
+spanning-tree 2 root-guard bpdu-filter bpdu-protection
+spanning-tree 3 admin-edge-port
+spanning-tree 3 root-guard bpdu-filter bpdu-protection
+spanning-tree 4 admin-edge-port
+spanning-tree 4 root-guard bpdu-filter bpdu-protection
+spanning-tree 5 admin-edge-port
+spanning-tree 5 root-guard bpdu-filter bpdu-protection
+spanning-tree 6 admin-edge-port
+spanning-tree 6 root-guard bpdu-filter bpdu-protection
+spanning-tree 7 admin-edge-port
+spanning-tree 7 root-guard bpdu-filter bpdu-protection
+spanning-tree 8 admin-edge-port
+spanning-tree 8 root-guard bpdu-filter bpdu-protection
+spanning-tree 9 admin-edge-port
+spanning-tree 9 root-guard bpdu-filter bpdu-protection
+spanning-tree 10 admin-edge-port
+spanning-tree 10 root-guard bpdu-filter bpdu-protection
+spanning-tree 11 admin-edge-port
+spanning-tree 11 root-guard bpdu-filter bpdu-protection
+spanning-tree 12 admin-edge-port
+spanning-tree 12 root-guard bpdu-filter bpdu-protection
+spanning-tree 13 admin-edge-port
+spanning-tree 13 root-guard bpdu-filter bpdu-protection
+spanning-tree 14 admin-edge-port
+spanning-tree 14 root-guard bpdu-filter bpdu-protection
+spanning-tree 15 admin-edge-port
+spanning-tree 15 root-guard bpdu-filter bpdu-protection
+spanning-tree 16 admin-edge-port
+spanning-tree 16 root-guard bpdu-filter bpdu-protection
+spanning-tree 17 admin-edge-port
+spanning-tree 17 root-guard bpdu-filter bpdu-protection
+spanning-tree 18 admin-edge-port
+spanning-tree 18 root-guard bpdu-filter bpdu-protection
+spanning-tree 19 admin-edge-port
+spanning-tree 19 root-guard bpdu-filter bpdu-protection
+spanning-tree 20 admin-edge-port
+spanning-tree 20 root-guard bpdu-filter bpdu-protection
+spanning-tree 21 admin-edge-port
+spanning-tree 21 root-guard bpdu-filter bpdu-protection
+spanning-tree 22 admin-edge-port
+spanning-tree 22 root-guard bpdu-filter bpdu-protection
+spanning-tree 23 admin-edge-port
+spanning-tree 23 root-guard bpdu-filter bpdu-protection
+spanning-tree 24 admin-edge-port
+spanning-tree 24 root-guard bpdu-filter bpdu-protection
+spanning-tree 25 admin-edge-port
+spanning-tree 25 root-guard bpdu-filter bpdu-protection
+spanning-tree 26 admin-edge-port
+spanning-tree 26 root-guard bpdu-filter bpdu-protection
+spanning-tree 27 admin-edge-port
+spanning-tree 27 root-guard bpdu-filter bpdu-protection
+spanning-tree 28 admin-edge-port
+spanning-tree 28 root-guard bpdu-filter bpdu-protection
+no tftp server
+fastboot
+loop-protect disable-timer 60
+no dhcp config-file-update
+no dhcp image-file-update
+password manager
+password operator
+

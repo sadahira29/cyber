@@ -1,0 +1,217 @@
+root@HOSTNAME> show configuration | display set | no-more
+set version 11.4R5.5
+set system host-name HOSTNAME
+set system time-zone Asia/Tokyo
+set system root-authentication encrypted-password "$1$vCaHQJ99$4PIKqZ3K.sMKf9d/V6b6X1"
+set system login user admin uid 2000
+set system login user admin class super-user
+set system login user admin authentication encrypted-password "$1$ns3JOWfZ$Od3G2wZC75i620MkuPrDz/"
+set system services ssh root-login deny
+set system services telnet
+set system syslog file messages authorization info
+set system ntp server 10.interfaces5.16.193 prefer
+set  ge-0/0/0 description IF-1
+
+###
+### interfaces
+###
+
+set interfaces ge-0/0/0 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan92
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan401
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan402
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan403
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan404
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan405
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan406
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan407
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan409
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan410
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan411
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan412
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan413
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan414
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan416
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan417
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan418
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan419
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan420
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan421
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan422
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan423
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan424
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan427
+
+
+set interfaces ge-0/0/1 description IF-2
+set interfaces ge-0/0/1 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members vlan401
+set interfaces ge-0/0/2 description IF-3
+set interfaces ge-0/0/2 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members vlan402
+set interfaces ge-0/0/3 description IF-4
+set interfaces ge-0/0/3 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members vlan403
+set interfaces ge-0/0/4 description IF-5
+set interfaces ge-0/0/4 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/4 unit 0 family ethernet-switching vlan members vlan404
+set interfaces ge-0/0/5 description IF-6
+set interfaces ge-0/0/5 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/5 unit 0 family ethernet-switching vlan members vlan405
+set interfaces ge-0/0/6 description IF-7
+set interfaces ge-0/0/6 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members vlan406
+set interfaces ge-0/0/7 description IF-8
+set interfaces ge-0/0/7 ether-options speed 100m
+set interfaces ge-0/0/7 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members vlan407
+set interfaces ge-0/0/8 description IF-9
+set interfaces ge-0/0/8 ether-options speed 100m
+set interfaces ge-0/0/8 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members vlan423
+set interfaces ge-0/0/9 description IF-10
+set interfaces ge-0/0/9 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members vlan409
+set interfaces ge-0/0/10 description IF-11
+set interfaces ge-0/0/10 ether-options speed 100m
+set interfaces ge-0/0/10 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members vlan410
+set interfaces ge-0/0/11 description IF-12
+set interfaces ge-0/0/11 ether-options speed 100m
+set interfaces ge-0/0/11 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/11 unit 0 family ethernet-switching vlan members vlan411
+set interfaces ge-0/0/12 description IF-13
+set interfaces ge-0/0/12 ether-options speed 100m
+set interfaces ge-0/0/12 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/12 unit 0 family ethernet-switching vlan members vlan412
+set interfaces ge-0/0/13 description IF-14
+set interfaces ge-0/0/13 ether-options speed 100m
+set interfaces ge-0/0/13 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/13 unit 0 family ethernet-switching vlan members vlan413
+set interfaces ge-0/0/14 description IF-15
+set interfaces ge-0/0/14 ether-options speed 100m
+set interfaces ge-0/0/14 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/14 unit 0 family ethernet-switching vlan members vlan414
+set interfaces ge-0/0/15 description IF-16
+set interfaces ge-0/0/15 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/15 unit 0 family ethernet-switching vlan members vlan417
+set interfaces ge-0/0/16 description IF-17
+set interfaces ge-0/0/16 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/16 unit 0 family ethernet-switching vlan members vlan416
+set interfaces ge-0/0/17 description IF-18
+set interfaces ge-0/0/17 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members vlan418
+set interfaces ge-0/0/18 description IF-19
+set interfaces ge-0/0/18 ether-options speed 100m
+set interfaces ge-0/0/18 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/18 unit 0 family ethernet-switching vlan members vlan419
+set interfaces ge-0/0/19 description IF-20
+set interfaces ge-0/0/19 ether-options speed 100m
+set interfaces ge-0/0/19 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/19 unit 0 family ethernet-switching vlan members vlan420
+set interfaces ge-0/0/20 description IF-21
+set interfaces ge-0/0/20 ether-options speed 100m
+set interfaces ge-0/0/20 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/20 unit 0 family ethernet-switching vlan members vlan421
+set interfaces ge-0/0/21 description IF-22
+set interfaces ge-0/0/21 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/21 unit 0 family ethernet-switching vlan members vlan422
+set interfaces ge-0/0/22 description IF-23
+set interfaces ge-0/0/22 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/22 unit 0 family ethernet-switching vlan members vlan92
+set interfaces ge-0/0/23 description IF-24
+set interfaces ge-0/0/23 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan401
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan402
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan403
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan404
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan405
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan406
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan407
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan409
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan410
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan411
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan412
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan413
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan414
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan416
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan417
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan418
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan419
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan420
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan421
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan422
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan423
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan424
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan427
+set interfaces me0 unit 0 family inet address 10.5.17.194/21
+
+###
+### snmp
+###
+
+set snmp location LOCATION1
+set snmp contact SNMP-CONTACT
+set snmp community SNMP-COM1 authorization read-only
+set routing-instances mgmt_junos routing-options static route 10.6.1.0/24 next-hop 10.5.16.250
+set routing-instances mgmt_junos routing-options static route 10.6.2.0/24 next-hop 10.5.17.250
+set routing-instances mgmt_junos routing-options static route 10.6.3.0/24 next-hop 10.5.17.250
+set routing-instances mgmt_junos routing-options static route 10.6.4.0/24 next-hop 10.5.17.250
+
+###
+### vlan
+###
+
+set vlans vlan1 description DEFAULT_VLAN
+set vlans vlan1 vlan-id 1
+
+set vlans vlan401 description "VLAN 401 seg"
+set vlans vlan401 vlan-id 401
+
+set vlans vlan402 description "VLAN 402 seg"
+set vlans vlan402 vlan-id 402
+set vlans vlan403 description "VLAN 403 seg"
+set vlans vlan403 vlan-id 403
+set vlans vlan404 description "VLAN 404 seg"
+set vlans vlan404 vlan-id 404
+set vlans vlan405 description "VLAN 405 seg"
+set vlans vlan405 vlan-id 405
+set vlans vlan406 description "VLAN 406 seg"
+set vlans vlan406 vlan-id 406
+set vlans vlan407 description "VLAN 407 seg"
+set vlans vlan407 vlan-id 407
+set vlans vlan409 description "VLAN 409 seg"
+set vlans vlan409 vlan-id 409
+set vlans vlan410 description "VLAN 410 seg"
+set vlans vlan410 vlan-id 410
+set vlans vlan411 description "VLAN 411 seg"
+set vlans vlan411 vlan-id 411
+set vlans vlan412 description "VLAN 412 seg"
+set vlans vlan412 vlan-id 412
+set vlans vlan413 description "VLAN 413 seg"
+set vlans vlan413 vlan-id 413
+set vlans vlan414 description "VLAN 414 seg"
+set vlans vlan414 vlan-id 414
+set vlans vlan416 description "VLAN 416 seg"
+set vlans vlan416 vlan-id 416
+set vlans vlan417 description "VLAN 417 seg"
+set vlans vlan417 vlan-id 417
+set vlans vlan418 description "VLAN 418 seg"
+set vlans vlan418 vlan-id 418
+set vlans vlan419 description "VLAN 419 seg"
+set vlans vlan419 vlan-id 419
+set vlans vlan420 description "VLAN 420 seg"
+set vlans vlan420 vlan-id 420
+set vlans vlan421 description "VLAN 421 seg"
+set vlans vlan421 vlan-id 421
+set vlans vlan422 description "VLAN 422 seg"
+set vlans vlan422 vlan-id 422
+set vlans vlan423 description "VLAN 423 seg"
+set vlans vlan423 vlan-id 423
+set vlans vlan424 description "VLAN 424 seg"
+set vlans vlan424 vlan-id 424
+set vlans vlan427 description "VLAN 427 seg"
+set vlans vlan427 vlan-id 427
+set vlans vlan92 description "VLAN 92 seg"
+set vlans vlan92 vlan-id 92
+set poe
