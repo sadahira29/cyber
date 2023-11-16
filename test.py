@@ -2,7 +2,7 @@ import csv
 import re
 
 # configを読み込む
-with open('config/juniper_config.txt', 'r') as config_txt:
+with open('config/juniper_config_short.txt', 'r') as config_txt:
 	# 各行を配列linesに格納
 	lines = config_txt.readlines()
 
@@ -37,4 +37,16 @@ for line in lines:
             next_hop = match.group(2)
             print(f"Destination: {static_route}, Next Hop: {next_hop}")
             continue
-
+    elif line.startswith("vlans"):
+        print(line)
+        match = re.match(r'vlans (\S+) description "(.*)"', line)
+        if match:
+            name = match.group(1)
+            description = match.group(2)
+            print(f"Name: {name}, Description: {description}")
+            continue
+        match = re.match(r"vlans \S+ vlan-id (\d+)", line)
+        if match:
+            vlan_id = match.group(1)
+            print(f"Vlan ID: {vlan_id}")
+            continue
