@@ -1,0 +1,21 @@
+interface:
+- duplex: ''
+  id: '1'
+  name: IF-1
+  speed: ''
+- duplex: ''
+  id: '2'
+  name: IF-2
+  speed: ''
+- duplex: ''
+  id: '3'
+  name: IF-3
+  speed: ''
+- duplex: full
+  id: '4'
+  name: IF-4
+  speed: '100'
+- duplex: full
+  id: '5'
+  name: IF-5
+  speed: '100'

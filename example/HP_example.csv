@@ -1,0 +1,38 @@
+interface,,
+,- id,1
+,name,"""IF-1"""
+,- id,2
+,name,"""IF-2"""
+,- id,3
+,name,"""IF-3"""
+,- id,4
+,name,"""IF-4"""
+,speed,100
+,duplex,full
+,name,"""IF-5"""
+,speed,100
+,duplex,full
+vlan,,
+,- id,1
+,name,"""DEFAULT_VLAN"""
+,- id,92
+,name,"""VLAN 92 seg"""
+,ip_adress,"""10.5.17.194"""
+,subnet_mask,"""255.255.248.0"""
+,- id,401
+,name,"""VLAN 401 seg"""
+,- id,402
+,name,"""VLAN 402 seg"""
+routing,,
+,- id,1
+,dest_ip,"""192.168.100.0"""
+,dest_mask,"""24"""
+,gateway,"""192.168.254.254"""
+,- id,2
+,dest_ip,"""172.16.0.0"""
+,dest_mask,"""16"""
+,gateway,"""192.168.254.254"""
+,- id,3
+,dest_ip,"""10.0.0.0"""
+,dest_mask,"""8"""
+,gateway,"""192.168.254.254"""

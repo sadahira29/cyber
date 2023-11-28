@@ -4,57 +4,27 @@ Running configuration:
 ; Ver #06:04.18.63.ff.37.27:96
 hostname "HOSTNAME"
 dos-filter
-
-# CDP（Cisco Discovery Protocol）の無効化
 no cdp run
 no cdp enable 1-28
-
-# VLANの最大数の設定
 max-vlans 512
-
-# SNTP（Simple Network Time Protocol）サーバの優先順位と設定
 sntp server priority 1 10.5.16.193
 sntp server priority 2 10.5.17.193
 sntp server priority 3 10.5.18.193
-
-# タイムゾーンがUTC+9時間
 time timezone 540
-
-# 静的ルートの設定
-# ip route [宛先ネットワーク] [サブネットマスク] [次ホップ]
 ip route 10.6.1.0 255.255.255.0 10.5.16.250
 ip route 10.6.2.0 255.255.255.0 10.5.17.250
 ip route 10.6.3.0 255.255.255.0 10.5.17.250
 ip route 10.6.4.0 255.255.255.0 10.5.17.250
-
-###
-### interface
-###
-
 interface 1
    name "IF-1"
    exit
-interface 2
-   name "IF-2"
-   exit
-...
 interface 26
    name "IF-26"
    speed-duplex 100-full
    exit
-
-###
-### snmp
-###
-
 snmp-server community "SNMP-COM1" operator unrestricted
 snmp-server community "SNMP-COM2" operator
 snmp-server contact "SNMP-CONTACT" location "LOCATION1"
-
-###
-### vlan
-###
-
 vlan 1
    name "DEFAULT_VLAN"
    no untagged 2-23,25-26
@@ -67,28 +37,17 @@ vlan 92
    tagged 1
    ip address 10.5.17.194 255.255.248.0
    exit
-...
 vlan 427
    name "VLAN 427 seg"
    untagged 26
    tagged 1,24
    no ip address
    exit
-
-###
-### spanninng-tree
-###
-
 management-vlan 92
 spanning-tree 1 admin-edge-port
 spanning-tree 1 root-guard bpdu-filter bpdu-protection
-spanning-tree 2 admin-edge-port
-spanning-tree 2 root-guard bpdu-filter bpdu-protection
-...
 spanning-tree 28 admin-edge-port
 spanning-tree 28 root-guard bpdu-filter bpdu-protection
-
-
 no tftp server
 fastboot
 loop-protect disable-timer 60
