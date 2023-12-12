@@ -1,0 +1,20 @@
+Management Information
+hostname,device ID
+hostname,l2-2023111001
+Interface
+device ID,port,name,speed,duplex,negotiation,ip adress,ip address mask,untag,tagged start,tagged end,lacp_port
+l2-2023111001,1,IF-1,,,,,24,1,100,,
+l2-2023111001,2,IF-2,,,,,,1,100,105,
+l2-2023111001,25,IF-25,1000,full,,,,,,,
+l2-2023111001,trk1,,,,,,,,100,105,25
+l2-2023111001,trk1,,,,,,,,100,105,26
+Vlan
+device ID,vlan ID,name,ip adress,ip adress mask
+l2-2023111001,1,DEFAULT_VLAN,,
+l2-2023111001,92,VLAN 92 seg,10.5.17.194,255.255.248.0
+l2-2023111001,401,VLAN 401 seg,,
+Routing
+device ID,dest_ip,dest_mask,gw,metric
+l2-2023111001,192.168.100.0,24,192.168.0.254,
+l2-2023111001,172.16.0.0,16,192.168.0.254,
+l2-2023111001,10.0.0.0,8,192.168.0.254,

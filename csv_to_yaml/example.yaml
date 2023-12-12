@@ -1,0 +1,91 @@
+Management Information:
+- hostname: hostname
+  device ID: l2-2023111001
+Interface:
+- device ID: l2-2023111001
+  port: '1'
+  name: IF-1
+  speed: ''
+  duplex: ''
+  negotiation: ''
+  ip adress: ''
+  ip address mask: '24'
+  untag: '1'
+  tagged start: '100'
+  tagged end: ''
+  lacp_port: ''
+- device ID: l2-2023111001
+  port: '2'
+  name: IF-2
+  speed: ''
+  duplex: ''
+  negotiation: ''
+  ip adress: ''
+  ip address mask: ''
+  untag: '1'
+  tagged start: '100'
+  tagged end: '105'
+  lacp_port: ''
+- device ID: l2-2023111001
+  port: '25'
+  name: IF-25
+  speed: '1000'
+  duplex: full
+  negotiation: ''
+  ip adress: ''
+  ip address mask: ''
+  untag: ''
+  tagged start: ''
+  tagged end: ''
+  lacp_port: ''
+- device ID: l2-2023111001
+  port: trk1
+  name: ''
+  speed: ''
+  duplex: ''
+  negotiation: ''
+  ip adress: ''
+  ip address mask: ''
+  untag: ''
+  tagged start: '100'
+  tagged end: '105'
+  lacp_port: '25'
+- device ID: l2-2023111001
+  port: trk1
+  name: ''
+  speed: ''
+  duplex: ''
+  negotiation: ''
+  ip adress: ''
+  ip address mask: ''
+  untag: ''
+  tagged start: '100'
+  tagged end: '105'
+  lacp_port: '26'
+Vlan:
+- device ID: l2-2023111001
+  vlan ID: '1'
+  name: DEFAULT_VLAN
+  ip adress: ''
+  ip adress mask: ''
+- device ID: l2-2023111001
+  vlan ID: '92'
+  name: VLAN_92_seg
+  ip adress: ''
+  ip adress mask: ''
+Routing:
+- device ID: l2-2023111001
+  dest_ip: 192.168.100.0
+  dest_mask: '24'
+  gw: 192.168.0.254
+  metric: ''
+- device ID: l2-2023111001
+  dest_ip: 172.16.0.0
+  dest_mask: '16'
+  gw: 192.168.0.254
+  metric: ''
+- device ID: l2-2023111001
+  dest_ip: 10.0.0.0
+  dest_mask: '8'
+  gw: 192.168.0.254
+  metric: ''

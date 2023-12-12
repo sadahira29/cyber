@@ -27,16 +27,28 @@ ip route 10.6.2.0 255.255.255.0 10.5.17.250
 ip route 10.6.3.0 255.255.255.0 10.5.17.250
 ip route 10.6.4.0 255.255.255.0 10.5.17.250
 
-###
-### interface
-###
-
+### interface項目
 interface 1
    name "IF-1"
    exit
+// HP
 interface 2
    name "IF-2"
    exit
+// juniper
+set interfaces ge-0/0/1 description IF-2
+set interfaces ge-0/0/1 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members vlan401
+...
+// HP
+interface 8
+   name "IF-8"
+   speed-duplex 100-full
+   exit
+// juniper
+set interfaces ge-0/0/7 ether-options speed 100m
+set interfaces ge-0/0/7 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members vlan407
 ...
 interface 26
    name "IF-26"
