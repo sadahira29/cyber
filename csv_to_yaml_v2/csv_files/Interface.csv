@@ -1,0 +1,6 @@
+device ID,port,name,speed,duplex,negotiation,ip adress,ip address mask,untag,tagged start,tagged end,lacp_port
+l2-2023111001,1,IF-1,,,,,24,1,100,,
+l2-2023111001,2,IF-2,,,,,,1,100,105,
+l2-2023111001,25,IF-25,1000,full,,,,,,,
+l2-2023111001,trk1,,,,,,,,100,105,25
+l2-2023111001,trk1,,,,,,,,100,105,26

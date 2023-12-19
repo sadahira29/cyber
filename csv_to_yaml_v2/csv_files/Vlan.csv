@@ -1,0 +1,4 @@
+device ID,vlan ID,name,ip adress,ip adress mask
+l2-2023111001,1,DEFAULT_VLAN,,
+l2-2023111001,92,VLAN 92 seg,10.5.17.194,255.255.248.0
+l2-2023111001,401,VLAN 401 seg,,

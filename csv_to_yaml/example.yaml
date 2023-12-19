@@ -70,7 +70,12 @@ Vlan:
   ip adress mask: ''
 - device ID: l2-2023111001
   vlan ID: '92'
-  name: VLAN_92_seg
+  name: VLAN 92 seg
+  ip adress: 10.5.17.194
+  ip adress mask: 255.255.248.0
+- device ID: l2-2023111001
+  vlan ID: '401'
+  name: VLAN 401 seg
   ip adress: ''
   ip adress mask: ''
 Routing:

@@ -1,0 +1,61 @@
+device ID: l2-2023111001
+port: trk1
+name: ''
+speed: ''
+duplex: ''
+negotiation: ''
+ip adress: ''
+ip address mask: ''
+untag: ''
+tagged start: '100'
+tagged end: '105'
+lacp_port: '26'
+device ID: l2-2023111001
+port: trk1
+name: ''
+speed: ''
+duplex: ''
+negotiation: ''
+ip adress: ''
+ip address mask: ''
+untag: ''
+tagged start: '100'
+tagged end: '105'
+lacp_port: '26'
+hostname: hostname
+device ID: l2-2023111001
+port: trk1
+name: ''
+speed: ''
+duplex: ''
+negotiation: ''
+ip adress: ''
+ip address mask: ''
+untag: ''
+tagged start: '100'
+tagged end: '105'
+lacp_port: '26'
+hostname: hostname
+dest_ip: 10.0.0.0
+dest_mask: '8'
+gw: 192.168.0.254
+metric: ''
+device ID: l2-2023111001
+port: trk1
+name: VLAN 401 seg
+speed: ''
+duplex: ''
+negotiation: ''
+ip adress: ''
+ip address mask: ''
+untag: ''
+tagged start: '100'
+tagged end: '105'
+lacp_port: '26'
+hostname: hostname
+dest_ip: 10.0.0.0
+dest_mask: '8'
+gw: 192.168.0.254
+metric: ''
+vlan ID: '401'
+ip adress mask: ''
