@@ -1,61 +1,92 @@
-device ID: l2-2023111001
-port: trk1
-name: ''
-speed: ''
-duplex: ''
-negotiation: ''
-ip adress: ''
-ip address mask: ''
-untag: ''
-tagged start: '100'
-tagged end: '105'
-lacp_port: '26'
-device ID: l2-2023111001
-port: trk1
-name: ''
-speed: ''
-duplex: ''
-negotiation: ''
-ip adress: ''
-ip address mask: ''
-untag: ''
-tagged start: '100'
-tagged end: '105'
-lacp_port: '26'
-hostname: hostname
-device ID: l2-2023111001
-port: trk1
-name: ''
-speed: ''
-duplex: ''
-negotiation: ''
-ip adress: ''
-ip address mask: ''
-untag: ''
-tagged start: '100'
-tagged end: '105'
-lacp_port: '26'
-hostname: hostname
-dest_ip: 10.0.0.0
-dest_mask: '8'
-gw: 192.168.0.254
-metric: ''
-device ID: l2-2023111001
-port: trk1
-name: VLAN 401 seg
-speed: ''
-duplex: ''
-negotiation: ''
-ip adress: ''
-ip address mask: ''
-untag: ''
-tagged start: '100'
-tagged end: '105'
-lacp_port: '26'
-hostname: hostname
-dest_ip: 10.0.0.0
-dest_mask: '8'
-gw: 192.168.0.254
-metric: ''
-vlan ID: '401'
-ip adress mask: ''
+- device ID: l2-2023111001
+  port: '1'
+  name: IF-1
+  speed: ''
+  duplex: ''
+  negotiation: ''
+  ip adress: ''
+  ip address mask: '24'
+  untag: '1'
+  tagged start: '100'
+  tagged end: ''
+  lacp_port: ''
+- device ID: l2-2023111001
+  port: '2'
+  name: IF-2
+  speed: ''
+  duplex: ''
+  negotiation: ''
+  ip adress: ''
+  ip address mask: ''
+  untag: '1'
+  tagged start: '100'
+  tagged end: '105'
+  lacp_port: ''
+- device ID: l2-2023111001
+  port: '25'
+  name: IF-25
+  speed: '1000'
+  duplex: full
+  negotiation: ''
+  ip adress: ''
+  ip address mask: ''
+  untag: ''
+  tagged start: ''
+  tagged end: ''
+  lacp_port: ''
+- device ID: l2-2023111001
+  port: trk1
+  name: ''
+  speed: ''
+  duplex: ''
+  negotiation: ''
+  ip adress: ''
+  ip address mask: ''
+  untag: ''
+  tagged start: '100'
+  tagged end: '105'
+  lacp_port: '25'
+- device ID: l2-2023111001
+  port: trk1
+  name: ''
+  speed: ''
+  duplex: ''
+  negotiation: ''
+  ip adress: ''
+  ip address mask: ''
+  untag: ''
+  tagged start: '100'
+  tagged end: '105'
+  lacp_port: '26'
+- hostname: hostname
+  device ID: l2-2023111001
+- device ID: l2-2023111001
+  dest_ip: 192.168.100.0
+  dest_mask: '24'
+  gw: 192.168.0.254
+  metric: ''
+- device ID: l2-2023111001
+  dest_ip: 172.16.0.0
+  dest_mask: '16'
+  gw: 192.168.0.254
+  metric: ''
+- device ID: l2-2023111001
+  dest_ip: 10.0.0.0
+  dest_mask: '8'
+  gw: 192.168.0.254
+  metric: ''
+- device ID: l2-2023111001
+  vlan ID: '1'
+  name: DEFAULT_VLAN
+  ip adress: ''
+  ip adress mask: ''
+- device ID: l2-2023111001
+  vlan ID: '92'
+  name: VLAN 92 seg
+  ip adress: 10.5.17.194
+  ip adress mask: 255.255.248.0
+- device ID: l2-2023111001
+  vlan ID: '401'
+  name: VLAN 401 seg
+  ip adress: ''
+  ip adress mask: ''
