@@ -1,0 +1,11 @@
+vlan_id,vlan_name
+106,VLAN-106-seg
+90,"""VLAN 90 seg"""
+91,"""VLAN 91 seg"""
+92,"""VLAN 92 seg"""
+93,VLAN-93-seg
+94,"""VLAN  94 seg"""
+95,"""VLAN 95 seg"""
+96,"""VLAN 96 seg"""
+97,"""VLAN 97 seg"""
+98,VLAN-98-seg

@@ -59,9 +59,6 @@ Interface:
   tagged start: '100'
   tagged end: '105'
   lacp_port: '26'
-Management Information:
-- hostname: hostname
-  device ID: l2-2023111001
 Routing:
 - device ID: l2-2023111001
   dest_ip: 192.168.100.0
@@ -78,6 +75,9 @@ Routing:
   dest_mask: '8'
   gw: 192.168.0.254
   metric: ''
+System:
+- hostname: hostname
+  device ID: l2-2023111001
 Vlan:
 - device ID: l2-2023111001
   vlan ID: '1'

@@ -1,0 +1,36 @@
+VLANの設定
+　1.　VLANの作成
+　set vlans VLAN名 vlan-id VLAN番号
+　2.　プロトコルファミリーの設定
+　set interfaces ポート番号 unit 番号 family ethernet-switching
+　3.　ポートのモード設定（ アクセスポート ）
+　set interfaces ポート番号 unit 番号 family ethernet-switching port-mode access
+　4.　VLANの割り当て
+　set interfaces interface名 unit 番号 family ethernet-switching vlan members VLAN名
+設定例 ： ge-0/0/1（1番ポート）をアクセスポートにして、VLAN10を割り当てる設定例
+　# set vlans V10 vlan-id 10
+　# set interfaces ge-0/0/1 unit 0 family ethernet-switching
+　# set interfaces ge-0/0/1 unit 0 family ethernet-switching port-mode access
+　# set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members V10
+
+
+TRUNKの設定
+　1.　プロトコルファミリーの設定
+　set interfaces ポート番号 unit 番号 family ethernet-switching
+　2.　ポートのモード設定（ タギングポートの設定 ）
+　set interfaces ポート番号 unit 番号 family ethernet-switching port-mode trunk
+　3.　トランクポート上で通信許可するVLANの設定
+　set interfaces interface名 unit 番号 family ethernet-switching vlan members VLAN名
+設定例 ： ge-0/0/2をトランクポートにして、VLAN10とVLAN20のトラフィックを転送させる設定
+  # set interfaces ge-0/0/2 unit 0 family ethernet-switching
+  # set interfaces ge-0/0/2 unit 0 family ethernet-switching port-mode trunk
+  # set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members V10
+  # set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members V20
+
+ネゴシエーションの設定
+設定例 ： ge-0/0/2 ポートのオートネゴシエーションを無効化する設定
+  # set interfaces ge-0/0/2 ether-options no-auto-negotiation
+ネゴシエーションを無効化した場合、速度とリンクモードを明示的に設定する必要
+設定例 ： ge-0/0/2 ポートを「100Mbps」と「full-duplex」に固定する設定
+  # set interfaces ge-0/0/2 ether-options speed 100m
+  # set interfaces ge-0/0/2 ether-options link-mode full-duplex

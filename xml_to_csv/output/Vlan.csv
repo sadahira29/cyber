@@ -1,0 +1,11 @@
+VlanID,name,ip adress,ip adress mask
+106,VLAN-106-seg,,
+90,VLAN-90-seg,,
+91,VLAN-91-seg,,
+92,VLAN-92-seg,,
+93,VLAN-93,,
+94,VLAN-94,,
+95,VLAN-95,,
+96,VLAN-96,,
+97,VLAN-97,,
+98,VLAN-98,,
