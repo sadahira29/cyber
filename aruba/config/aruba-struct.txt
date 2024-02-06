@@ -281,7 +281,7 @@ vlan 401
    name "VLAN 401 seg"
    untagged 2
    tagged 1,24
-   no ip address
+   ip address 192.168.66.88 248.0.0.0
    exit
 vlan 402
    name "VLAN 402 seg"
@@ -293,7 +293,7 @@ vlan 403
    name "VLAN 403 seg"
    untagged 4
    tagged 1,24
-   no ip address
+   ip address 192.168.66.88 255.252.0.0
    exit
 vlan 404
    name "VLAN 404 seg"
@@ -305,7 +305,7 @@ vlan 405
    name "VLAN 405 seg"
    untagged 6
    tagged 1,24
-   no ip address
+   ip address 192.168.66.88 255.255.192.0
    exit
 vlan 406
    name "VLAN 406 seg"
