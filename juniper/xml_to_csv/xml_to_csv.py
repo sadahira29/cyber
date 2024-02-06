@@ -100,7 +100,7 @@ for interface in interfaces:
         speed  = speed_tag[0].tag.split('-')[1]
         duplex = 'full'
     # 抽出した config をリスト化して追加
-    interface_config.append([name, port, speed, duplex, negotiation, ip_address, ip_address_mask, untag, tag_start, tag_end, lacp_port])
+    interface_config.append([port, name, speed, duplex, negotiation, ip_address, ip_address_mask, untag, tag_start, tag_end, lacp_port])
 
 # 抽出したInterfaceのConfigurationをCSVに変換する
 convertCSV(interface_csv_path, interface_headers, interface_config)
