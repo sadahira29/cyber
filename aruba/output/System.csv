@@ -1,2 +1,2 @@
-hostname
-HOSTNAME
+hostname,deviceID
+HOSTNAME,l2-20240207
