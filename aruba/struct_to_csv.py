@@ -123,9 +123,9 @@ with open('./aruba/config/aruba-struct.txt', 'r', newline='') as file:
                     else:  # 1つだけなら、スタートもエンドも同じ値にする
                         tag_start = tag_end = tag_range
                     # 抽出した config をヘッダーに合わせた順番にリスト化して追加
-                    interface_config.append([name, port, speed, duplex, negotiation, ip_address, prefix_len, untag, tag_start, tag_end, lacp_port])
+                    interface_config.append([port, name, speed, duplex, negotiation, ip_address, prefix_len, untag, tag_start, tag_end, lacp_port])
             else:  # ない場合はそのまま追加
-                interface_config.append([name, port, speed, duplex, negotiation, ip_address, prefix_len, untag, tag_start, tag_end, lacp_port])
+                interface_config.append([port, name, speed, duplex, negotiation, ip_address, prefix_len, untag, tag_start, tag_end, lacp_port])
         # vlan の config 抽出
         elif line.startswith('vlan'):  # 例：vlan 1
             # 各項目の初期化
