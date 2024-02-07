@@ -132,7 +132,7 @@ if __name__ == '__main__':
                             tag_end   = tag_range.split('-')[1]  # 後半をエンド
                         else:  # 1つだけなら、スタートもエンドも同じ値にする
                             tag_start = tag_end = tag_range
-                        # 抽出した config をヘッダーに合わせた順番にリスト化して追加
+                        # 抽出した config をヘッダーの順番に合わせてリスト化して追加
                         interface_config.append([device_id, port, name, speed, duplex, negotiation, ip_address, prefix_len, untag, tag_start, tag_end, lacp_port])
                 else:  # ない場合はそのまま追加
                     interface_config.append([device_id, port, name, speed, duplex, negotiation, ip_address, prefix_len, untag, tag_start, tag_end, lacp_port])
@@ -156,18 +156,18 @@ if __name__ == '__main__':
                         ip_address  = line.split()[2]  # IPアドレス
                         subnet_mask = line.split()[3]  # サブネットマスク
                         prefix_len  = getPrefixLen(ip_address, subnet_mask)  # プレフィックス長
-                # 抽出した config をヘッダーに合わせた順番にリスト化して追加
+                # 抽出した config をヘッダーの順番に合わせてリスト化して追加
                 vlan_config.append([device_id, vlan_id, vlan_name ,ip_address, prefix_len])
             # routing の config 抽出
             elif line.startswith('ip route'):  # 例：ip route 10.6.1.0 255.255.255.0 10.5.16.250
                 # 各項目の初期化
-                ip_address = subnet_mask = prefix_len = gateway = metric = ''
-                ip_address  = line.split()[2]  # IPアドレス
-                subnet_mask = line.split()[3]  # サブネットマスク
+                dest_ip = dest_mask = prefix_len = gateway = metric = ''
+                dest_ip  = line.split()[2]  # IPアドレス
+                dest_mask = line.split()[3]  # サブネットマスク
                 gateway     = line.split()[4]  # ゲートウェイ
-                prefix_len  = getPrefixLen(ip_address, subnet_mask)  # プレフィックス長
-                # 抽出した config をヘッダーに合わせた順番にリスト化して追加
-                routing_config.append([device_id, ip_address, prefix_len, gateway, metric])
+                prefix_len  = getPrefixLen(dest_ip, dest_mask)  # プレフィックス長
+                # 抽出した config をヘッダーの順番に合わせてリスト化して追加
+                routing_config.append([device_id, dest_ip, prefix_len, gateway, metric])
 
     # 抽出した各Configuration をCSVに変換する
     convertCSV(system_csv_path, system_headers, system_config)           # System

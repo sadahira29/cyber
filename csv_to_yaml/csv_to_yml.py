@@ -41,7 +41,9 @@ def dict_to_yaml(dict_data, yaml_file):
 
 
 # 入力するCSVファイル
+# csv_file  = 'csv_to_yaml/example.csv'
 csv_file  = 'csv_to_yaml/example.csv'
+
 # 出力するYamlファイル
 yaml_file = 'csv_to_yaml/example.yaml'
 

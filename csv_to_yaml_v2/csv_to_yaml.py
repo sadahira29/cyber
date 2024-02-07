@@ -27,11 +27,13 @@ def dict_to_yaml(dict_data, yaml_file_path):
 #------------------------------------------------------
 
 # CSVファイルがあるディレクトリのパ名名名
-directory_path = "./csv_to_yaml_v2/csv_files/"
+# directory_path = "./csv_to_yaml_v2/csv_files/"
+directory_path = "./juniper/xml_to_csv/output/"
 # ディレクトリ内にあるCSVファイル名をリストにすべて格納する
 csv_files = os.listdir(directory_path)
 # 出力するYamlファイルのパス名
-yaml_file_path = './csv_to_yaml_v2/output.yaml'
+# yaml_file_path = './csv_to_yaml_v2/output.yaml'
+yaml_file_path = './csv_to_yaml_v2/juniper.yaml'
 # 空の辞書型データ
 dict_data = {}
 
