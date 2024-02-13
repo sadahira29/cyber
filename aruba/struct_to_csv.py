@@ -7,7 +7,7 @@ import ipaddress
 #------------------------------------------------------
 
 # リストからCSVに変換する関数
-def convertCSV(csv_path, csv_headers, config_lists):
+def list_to_csv(csv_path, csv_headers, config_lists):
     with open(csv_path, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(csv_headers)
@@ -16,7 +16,7 @@ def convertCSV(csv_path, csv_headers, config_lists):
             writer.writerow(config_list)
 
 # サブネットマスクをプレフィックス長に変換する関数
-def getPrefixLen(ip_address, subnet_mask):
+def get_prefix_len(ip_address, subnet_mask):
     # IPv4アドレスオブジェクトを作成
     address_obj = ipaddress.IPv4Address(ip_address)
     # IPv4ネットワークオブジェクトを作成
@@ -157,7 +157,7 @@ if __name__ == '__main__':
                     elif line.startswith('ip address'):  # 例：ip address 192.168.66.88 255.255.255.0
                         ip_address  = line.split()[2]  # IPアドレス
                         subnet_mask = line.split()[3]  # サブネットマスク
-                        prefix_len  = getPrefixLen(ip_address, subnet_mask)  # プレフィックス長
+                        prefix_len  = get_prefix_len(ip_address, subnet_mask)  # プレフィックス長
                 # 抽出した config をヘッダの順番に合わせてリスト化して追加
                 vlan_config.append([device_id, vlan_id, vlan_name ,ip_address, prefix_len])
             # routing の config 抽出
@@ -167,12 +167,12 @@ if __name__ == '__main__':
                 dest_ip    = line.split()[2]  # IPアドレス
                 dest_mask  = line.split()[3]  # サブネットマスク
                 gateway    = line.split()[4]  # ゲートウェイ
-                prefix_len = getPrefixLen(dest_ip, dest_mask)  # プレフィックス長
+                prefix_len = get_prefix_len(dest_ip, dest_mask)  # プレフィックス長
                 # 抽出した config をヘッダの順番に合わせてリスト化して追加
                 routing_config.append([device_id, dest_ip, prefix_len, gateway, metric])
 
     # 抽出した各Configuration をCSVに変換する
-    convertCSV(system_csv_path, system_headers, system_config)           # System
-    convertCSV(interface_csv_path, interface_headers, interface_config)  # Interface
-    convertCSV(vlan_csv_path, vlan_headers, vlan_config)                 # Vlan
-    convertCSV(routing_csv_path, routing_headers, routing_config)        # Routing
+    list_to_csv(system_csv_path, system_headers, system_config)           # System
+    list_to_csv(interface_csv_path, interface_headers, interface_config)  # Interface
+    list_to_csv(vlan_csv_path, vlan_headers, vlan_config)                 # Vlan
+    list_to_csv(routing_csv_path, routing_headers, routing_config)        # Routing
