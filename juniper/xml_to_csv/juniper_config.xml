@@ -89,6 +89,11 @@
                                     <members>vlan401</members>
                                 </vlan>
                             </ethernet-switching>
+                            <inet>
+                                <address>
+                                    <name>10.5.17.194/21</name>
+                                </address>
+                            </inet>
                         </family>
                     </unit>
                 </interface>
@@ -104,6 +109,11 @@
                                     <members>vlan402</members>
                                 </vlan>
                             </ethernet-switching>
+                            <inet>
+                                <address>
+                                    <name>10.6.1.0/24</name>
+                                </address>
+                            </inet>
                         </family>
                     </unit>
                 </interface>
@@ -121,6 +131,11 @@
                             </ethernet-switching>
                         </family>
                     </unit>
+                    <inet>
+                        <address>
+                            <name>10.6.1.0/24</name>
+                        </address>
+                    </inet>
                 </interface>
                 <interface>
                     <name>ge-0/0/4</name>
