@@ -1,7 +1,6 @@
 import csv
 import re
 import ipaddress
-import sys
 
 #------------------------------------------------------
 # 関数の定義
@@ -33,10 +32,10 @@ def getPrefixLen(ip_address, subnet_mask):
 
 # outputするCSVファイルのパス
 output_directry    = './output/'
-system_csv_path    = output_directry + 'System.csv'
-interface_csv_path = output_directry + 'Interface.csv'
-routing_csv_path   = output_directry + 'Routing.csv'
-vlan_csv_path      = output_directry + 'Vlan.csv'
+system_csv_path    = output_directry + 'System_ar.csv'
+interface_csv_path = output_directry + 'Interface_ar.csv'
+routing_csv_path   = output_directry + 'Routing_ar.csv'
+vlan_csv_path      = output_directry + 'Vlan_ar.csv'
 
 # 抽出した config を保存しておくリスト
 system_config    = []   # システム

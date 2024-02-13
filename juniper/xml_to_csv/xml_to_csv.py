@@ -21,10 +21,10 @@ def convertCSV(csv_path, csv_headers, config_lists):
 
 # outputするCSVファイルのパス
 output_directry    = './output/'
-system_csv_path    = output_directry + 'System.csv'
-interface_csv_path = output_directry + 'Interface.csv'
-routing_csv_path   = output_directry + 'Routing.csv'
-vlan_csv_path      = output_directry + 'Vlan.csv'
+system_csv_path    = output_directry + 'System_ju.csv'
+interface_csv_path = output_directry + 'Interface_ju.csv'
+routing_csv_path   = output_directry + 'Routing_ju.csv'
+vlan_csv_path      = output_directry + 'Vlan_ju.csv'
 
 # 抽出した config を保存しておくリスト
 system_config    = []   # システム
