@@ -75,10 +75,10 @@ vlan_headers = [
 if __name__ == '__main__':
     # コマンドライン引数として機器IDを取得
     device_id = input('Enter the decice ID: ')
-
+    # 変換対象のaruba configのファイル名（パス）を取得
+    juniper_config_xml = input("Enter the file name or path of juniper config(XML): ")
     # XMLを扱えるようにするための準備
-    xml_file_path = 'config.xml'
-    tree = ET.parse(xml_file_path)
+    tree = ET.parse(juniper_config_xml)
     root = tree.getroot()
 
     # System(管理情報)のConfiguration抽出
