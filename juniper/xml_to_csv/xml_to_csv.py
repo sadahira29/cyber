@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 #------------------------------------------------------
 
 # リストからCSVに変換する関数
-def export_list_to_csv(csv_path, csv_headers, config_lists):
+def list_to_csv(csv_path, csv_headers, config_lists):
     with open(csv_path, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(csv_headers)
@@ -213,7 +213,7 @@ if __name__ == '__main__':
         vlan_config.append([device_id, vlan_id, vlan_desc, ip_address, subnet_mask])
 
     # 抽出した Configuration リストをCSVに変換し出力する
-    export_list_to_csv(system_csv_path, system_headers, system_config)           # System
-    export_list_to_csv(interface_csv_path, interface_headers, interface_config)  # Interface
-    export_list_to_csv(routing_csv_path, routing_headers, routing_config)        # Routing
-    export_list_to_csv(vlan_csv_path, vlan_headers, vlan_config)                 # Valn
+    list_to_csv(system_csv_path, system_headers, system_config)           # System
+    list_to_csv(interface_csv_path, interface_headers, interface_config)  # Interface
+    list_to_csv(routing_csv_path, routing_headers, routing_config)        # Routing
+    list_to_csv(vlan_csv_path, vlan_headers, vlan_config)                 # Valn
