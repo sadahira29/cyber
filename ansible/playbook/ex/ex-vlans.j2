@@ -1,0 +1,11 @@
+{% for vlan in vlans.vlan %}
+  {% if vlan.description is defined %}
+set vlans {{ vlan.name }} description {{ vlan.description }}
+  {% endif %}
+  {% if vlan.vlan_id is defined %}
+set vlans {{ vlan.name }} vlan-id {{ vlan.vlan_id }}
+  {% endif %}
+  {% if vlan.l3_interface is defined %}
+set vlans {{ vlan.name }} l3-interface {{ vlan.l3_interface }}
+  {% endif %}
+{% endfor %}

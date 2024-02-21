@@ -1,0 +1,14 @@
+{% if spanning_trees is defined %}
+  {% for tree in spanning_trees.spanning_tree %}
+    {% if tree.admin_edge_port is defined %}
+spanning-tree {{ tree.name }} admin-edge-port
+    {% endif %}
+    {% if tree.root_guard is defined %}
+      {% if tree.bpdu_filter is defined %}
+        {% if tree.bpdu_protection is defined %}
+spanning-tree {{ tree.name }} root-guard bpdu-filter bpdu-protection
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

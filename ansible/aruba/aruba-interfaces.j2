@@ -1,0 +1,10 @@
+{% for interface in interfaces.interface %}
+interface {{ interface.name }}
+  {% if interface.description is defined %}
+   name "{{ interface.description }}"
+  {% endif %}
+  {% if interface.speed_duplex is defined %}
+   speed-duplex {{ interface.speed_duplex }}
+  {% endif %}
+   exit
+{% endfor %}

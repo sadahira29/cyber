@@ -1,0 +1,59 @@
+set system host-name HOSTNAME
+set system time-zone 540
+set interfaces 1 description "IF-1"
+set interfaces 2 description "IF-2"
+set interfaces 3 description "IF-3"
+set interfaces 4 description "IF-4"
+set interfaces 5 description "IF-5"
+set interfaces 6 description "IF-6"
+set interfaces 7 description "IF-7"
+set interfaces 8 description "IF-8"
+set interfaces 9 description "IF-9"
+set interfaces 10 description "IF-10"
+set interfaces 11 description "IF-11"
+set interfaces 12 description "IF-12"
+set interfaces 13 description "IF-13"
+set interfaces 14 description "IF-14"
+set interfaces 15 description "IF-15"
+set interfaces 16 description "IF-16"
+set interfaces 17 description "IF-17"
+set interfaces 18 description "IF-18"
+set interfaces 19 description "IF-19"
+set interfaces 20 description "IF-20"
+set interfaces 21 description "IF-21"
+set interfaces 22 description "IF-22"
+set interfaces 23 description "IF-23"
+set interfaces 24 description "IF-24"
+set interfaces 25 description "IF-25"
+set interfaces 26 description "IF-26"
+set snmp location LOCATION1
+set snmp contact SNMP-CONTACT
+set routing-options static route 10.6.1.0/24 next-hop 10.5.16.250
+set routing-options static route 10.6.2.0/24 next-hop 10.5.17.250
+set routing-options static route 10.6.3.0/24 next-hop 10.5.17.250
+set routing-options static route 10.6.4.0/24 next-hop 10.5.17.250
+set vlans DEFAULT_VLAN vlan-id 1
+set vlans VLAN 92 seg vlan-id 92
+set vlans VLAN 401 seg vlan-id 401
+set vlans VLAN 402 seg vlan-id 402
+set vlans VLAN 403 seg vlan-id 403
+set vlans VLAN 404 seg vlan-id 404
+set vlans VLAN 405 seg vlan-id 405
+set vlans VLAN 406 seg vlan-id 406
+set vlans VLAN 407 seg vlan-id 407
+set vlans VLAN 409 seg vlan-id 409
+set vlans VLAN 410 seg vlan-id 410
+set vlans VLAN 411 seg vlan-id 411
+set vlans VLAN 412 seg vlan-id 412
+set vlans VLAN 413 seg vlan-id 413
+set vlans VLAN 414 seg vlan-id 414
+set vlans VLAN 416 seg vlan-id 416
+set vlans VLAN 417 seg vlan-id 417
+set vlans VLAN 418 seg vlan-id 418
+set vlans VLAN 419 seg vlan-id 419
+set vlans VLAN 420 seg vlan-id 420
+set vlans VLAN 421 seg vlan-id 421
+set vlans VLAN 422 seg vlan-id 422
+set vlans VLAN 423 seg vlan-id 423
+set vlans VLAN 424 seg vlan-id 424
+set vlans VLAN 427 seg vlan-id 427

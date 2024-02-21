@@ -1,0 +1,128 @@
+{% if security.alg is defined %}
+  {% set alg = security.alg %}
+  {% if alg.dns.disable is defined  %}
+set security alg dns disable
+  {% endif %}
+  {% if alg.ftp.ftps_extension is defined  %}
+set security alg ftp ftps-extension
+  {% endif %}
+{% endif %}
+{% if security.flow is defined %}
+  {% if security.flow.tcp_mss is defined %}
+    {% set mss = security.flow.tcp_mss %}
+set security flow tcp-mss ipsec-vpn mss {{ mss.ipsec_vpn.mss }}
+  {% endif %}
+  {% set session = security.flow.tcp_session %}
+  {% if session.no_syn_check is defined %}
+set security flow tcp-session no-syn-check
+  {% endif %}
+  {% if session.no_sequence_check is defined %}
+set security flow tcp-session no-sequence-check
+  {% endif %}
+{% endif %}
+{% if security.screen is defined %}
+  {% set ids = security.screen.ids_option %}
+set security screen ids-option {{ ids.name }} icmp ping-death
+set security screen ids-option {{ ids.name }} ip source-route-option
+set security screen ids-option {{ ids.name }} ip tear-drop
+set security screen ids-option {{ ids.name }} tcp syn-flood alarm-threshold {{ ids.tcp.syn_flood.alarm_threshold }}
+set security screen ids-option {{ ids.name }} tcp syn-flood attack-threshold {{ ids.tcp.syn_flood.attack_threshold }}
+set security screen ids-option {{ ids.name }} tcp syn-flood source-threshold {{ ids.tcp.syn_flood.source_threshold }}
+set security screen ids-option {{ ids.name }} tcp syn-flood destination-threshold {{ ids.tcp.syn_flood.destination_threshold }}
+set security screen ids-option {{ ids.name }} tcp syn-flood timeout {{ ids.tcp.syn_flood.timeout }}
+set security screen ids-option {{ ids.name }} tcp land
+{% endif %}
+{% if security.nat is defined %}
+  {% set source = security.nat.source %}
+  {% for pool in source.pool %}
+set security nat source pool {{ pool.name }} address {{ pool.address.name }}
+  {% endfor %}
+  {% for rule in source.rule_set %}
+set security nat source rule-set {{ rule.name }} from zone {{ rule.from.zone }}
+set security nat source rule-set {{ rule.name }} to zone {{ rule.to.zone }}
+set security nat source rule-set {{ rule.name }} rule {{ rule.rule.name }} match source-address {{ rule.rule.src_nat_rule_match.source_address }}
+set security nat source rule-set {{ rule.name }} rule {{ rule.rule.name }} match destination-address {{ rule.rule.src_nat_rule_match.destination_address }}
+set security nat source rule-set {{ rule.name }} rule {{ rule.rule.name }} then source-nat pool {{ rule.rule.then.source_nat.pool.pool_name }}
+  {% endfor %}
+  {% set destination = security.nat.destination %}
+set security nat destination pool {{ destination.pool.name }} address {{ destination.pool.address.ipaddr }}
+set security nat destination rule-set {{ destination.rule_set.name }} from zone {{ destination.rule_set.from.zone }}
+set security nat destination rule-set {{ destination.rule_set.name }} rule {{ destination.rule_set.rule.name }} match source-address {{ destination.rule_set.rule.dest_nat_rule_match.source_address }}
+set security nat destination rule-set {{ destination.rule_set.name }} rule {{ destination.rule_set.rule.name }} match destination-address {{ destination.rule_set.rule.dest_nat_rule_match.destination_address.dst_addr }}
+set security nat destination rule-set {{ destination.rule_set.name }} rule {{ destination.rule_set.rule.name }} then destination-nat pool {{ destination.rule_set.rule.then.destination_nat.pool.pool_name }}
+  {% set static = security.nat.static %}
+set security nat static rule-set {{ static.rule_set.name }} from zone {{ static.rule_set.from.zone }}
+set security nat static rule-set {{ static.rule_set.name }} rule {{ static.rule_set.rule.name }} match destination-address {{ static.rule_set.rule.static_nat_rule_match.destination_address.dst_addr }}
+set security nat static rule-set {{ static.rule_set.name }} rule {{ static.rule_set.rule.name }} then static-nat prefix {{ static.rule_set.rule.then.static_nat.prefix.addr_prefix }}
+{% endif %}
+{% if security.ike is defined %}
+  {% set proposal = security.ike.proposal %}
+set security ike proposal {{ proposal.name }} authentication-method {{ proposal.authentication_method }}
+set security ike proposal {{ proposal.name }} dh-group {{ proposal.dh_group }}
+set security ike proposal {{ proposal.name }} authentication-algorithm {{ proposal.authentication_algorithm }}
+set security ike proposal {{ proposal.name }} encryption-algorithm {{ proposal.encryption_algorithm }}
+  {% set policy = security.ike.policy %}
+set security ike policy {{ policy.name }} mode {{ policy.mode }}
+set security ike policy {{ policy.name }} proposals {{ policy.proposals }}
+set security ike policy {{ policy.name }} pre-shared-key ascii-text "{{ policy.pre_shared_key.ascii_text }}"
+  {% set gateway = security.ike.gateway %}
+set security ike gateway {{ gateway.name }} ike-policy {{ gateway.ike_policy }}
+set security ike gateway {{ gateway.name }} address {{ gateway.address }}
+set security ike gateway {{ gateway.name }} dead-peer-detection interval {{ gateway.dead_peer_detection.interval }}
+set security ike gateway {{ gateway.name }} dead-peer-detection threshold {{ gateway.dead_peer_detection.threshold }}
+set security ike gateway {{ gateway.name }} nat-keepalive {{ gateway.nat_keepalive }}
+set security ike gateway {{ gateway.name }} external-interface {{ gateway.external_interface }}
+set security ike gateway {{ gateway.name }} version {{ gateway.version }}
+{% endif %}
+{% if security.ipsec is defined %}
+set security ipsec vpn-monitor-options interval {{ security.ipsec.vpn_monitor_options.interval }}
+set security ipsec vpn-monitor-options threshold {{ security.ipsec.vpn_monitor_options.threshold }}
+  {% set proposal = security.ipsec.proposal %}
+set security ipsec proposal {{ proposal.name }} protocol {{ proposal.protocol }}
+set security ipsec proposal {{ proposal.name }} authentication-algorithm {{ proposal.authentication_algorithm }}
+set security ipsec proposal {{ proposal.name }} encryption-algorithm {{ proposal.encryption_algorithm }}
+  {% set policy = security.ipsec.policy %}
+set security ipsec policy {{ policy.name }} perfect-forward-secrecy keys {{ policy.perfect_forward_secrecy._keys }}
+set security ipsec policy {{ policy.name }} proposals {{ policy.proposals }}
+  {% set vpn = security.ipsec.vpn %}
+set security ipsec vpn {{ vpn.name }} bind-interface {{ vpn.bind_interface }}
+  {% if vpn.vpn_monitor.optimized is defined %}
+set security ipsec vpn {{ vpn.name }} vpn-monitor optimized
+  {% endif %}
+set security ipsec vpn {{ vpn.name }} ike gateway {{ vpn.ike.gateway }}
+set security ipsec vpn {{ vpn.name }} ike ipsec-policy {{ vpn.ike.ipsec_policy }}
+set security ipsec vpn {{ vpn.name }} establish-tunnels {{ vpn.establish_tunnels }}
+{% endif %}
+{% if security.policies is defined %}
+  {% for policy in security.policies.policy %}
+    {% for ppolicy in policy.policy %}
+      {% if ppolicy.match.source_address %}
+set security policies from-zone {{ policy.from_zone_name }} to-zone {{ policy.to_zone_name }} policy {{ ppolicy.name }} match source-address {{ ppolicy.match.source_address }}
+      {% endif %}
+      {% if ppolicy.match.destination_address %}
+set security policies from-zone {{ policy.from_zone_name }} to-zone {{ policy.to_zone_name }} policy {{ ppolicy.name }} match destination-address {{ ppolicy.match.destination_address }}
+      {% endif %}
+      {% if ppolicy.match.application %}
+set security policies from-zone {{ policy.from_zone_name }} to-zone {{ policy.to_zone_name }} policy {{ ppolicy.name }} match application {{ ppolicy.match.application }}
+      {% endif %}
+      {% if ppolicy.then.permit is defined %}
+set security policies from-zone {{ policy.from_zone_name }} to-zone {{ policy.to_zone_name }} policy {{ ppolicy.name }} then permit
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+{% if security.zones is defined %}
+  {% for zone in security.zones.security_zone %}
+    {% if zone.host_inbound_traffic is defined %}
+    {% for service in zone.host_inbound_traffic.system_services %}
+set security zones security-zone {{ zone.name }} host-inbound-traffic system-services {{ service.name }}
+    {% endfor %}
+    {% if zone.host_inbound_traffic.protocols is defined %}
+      {% for protocol in zone.host_inbound_traffic.protocols %}
+set security zones security-zone {{ zone.name }} host-inbound-traffic protocols {{ protocol.name }}
+      {% endfor %}
+    {% endif %}
+    {% endif %}
+set security zones security-zone {{ zone.name }} interfaces {{ zone.interfaces.name }}
+  {% endfor %}
+{% endif %}

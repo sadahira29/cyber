@@ -1,0 +1,53 @@
+{% if system.host_name is defined %}
+hostname "{{ system.host_name }}"
+{% endif %}
+{% if system.dos_filter is defined %}
+dos-filter
+{% endif %}
+{% if system.no_cdp_run is defined %}
+no cdp run
+{% endif %}
+{% if system.no_cdp_enable is defined %}
+no cdp enable {{ system.no_cdp_enable }}
+{% endif %}
+{% if system.max_vlans is defined %}
+max-vlans {{ system.max_vlans }}
+{% endif %}
+{% if system.sntp is defined %}
+  {% for server in system.sntp.server %}
+sntp server priority {{ server.priority }} {{ server.name }}
+  {% endfor %}
+{% endif %}
+{% if system.ntp is defined %}
+  {% for server in system.ntp.server %}
+    {% if server.prefer is defined %}
+sntp server priority 1 {{ server.name }}
+    {% else %}
+sntp server priority 2 {{ server.name }}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if system.time_zone is defined %}
+time timezone {{ system.time_zone }}
+{% endif %}
+{% if system.no_tftp_server is defined %}
+no tftp server
+{% endif %}
+{% if system.fastboot is defined %}
+fastboot
+{% endif %}
+{% if system.loop_protect is defined %}
+loop-protect disable-timer {{ system.loop_protect.disable_timer }}
+{% endif %}
+{% if system.no_dhcp_config_file_update is defined %}
+no dhcp config-file-update
+{% endif %}
+{% if system.no_dhcp_image_file_update is defined %}
+no dhcp image-file-update
+{% endif %}
+{% if system.password_manager is defined %}
+password manager
+{% endif %}
+{% if system.password_operator is defined %}
+password operator
+{% endif %}

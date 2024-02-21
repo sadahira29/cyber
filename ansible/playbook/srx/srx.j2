@@ -1,0 +1,11 @@
+{% if version is defined %}
+set version {{ version }}
+{% endif %}
+{% include "srx-system.j2" %}
+{% include "srx-chassis.j2" %}
+{% include "srx-interfaces.j2" %}
+{% include "srx-snmp.j2" %}
+{% include "srx-routing-options.j2" %}
+{% include "srx-protocols.j2" %}
+{% include "srx-security.j2" %}
+{% include "srx-vlans.j2" %}

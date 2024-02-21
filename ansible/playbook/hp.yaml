@@ -1,0 +1,713 @@
+HP_config:
+hostname:
+  value: "HOSTNAME"
+dos_filter:
+no:
+  cdp:
+  run:
+no:
+  cdp:
+  enable:
+  value: "1-28"
+max_vlans:
+  value: "512"
+sntp:
+  server:
+  priority:
+  value: "1"
+  value: "10.5.16.193"
+sntp:
+  server:
+  priority:
+  value: "2"
+  value: "10.5.17.193"
+sntp:
+  server:
+  priority:
+  value: "3"
+  value: "10.5.18.193"
+time:
+  timezone:
+  value: "540"
+ip:
+  route:
+  value: "10.6.1.0"
+  value: "255.255.255.0"
+  value: "10.5.16.250"
+ip:
+  route:
+  value: "10.6.2.0"
+  value: "255.255.255.0"
+  value: "10.5.17.250"
+ip:
+  route:
+  value: "10.6.3.0"
+  value: "255.255.255.0"
+  value: "10.5.17.250"
+ip:
+  route:
+  value: "10.6.4.0"
+  value: "255.255.255.0"
+  value: "10.5.17.250"
+interface:
+  value: "1"
+  name:
+    value: "IF-1"
+interface:
+  value: "2"
+  name:
+    value: "IF-2"
+interface:
+  value: "3"
+  name:
+    value: "IF-3"
+interface:
+  value: "4"
+  name:
+    value: "IF-4"
+interface:
+  value: "5"
+  name:
+    value: "IF-5"
+interface:
+  value: "6"
+  name:
+    value: "IF-6"
+interface:
+  value: "7"
+  name:
+    value: "IF-7"
+interface:
+  value: "8"
+  name:
+    value: "IF-8"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "9"
+  name:
+    value: "IF-9"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "10"
+  name:
+    value: "IF-10"
+interface:
+  value: "11"
+  name:
+    value: "IF-11"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "12"
+  name:
+    value: "IF-12"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "13"
+  name:
+    value: "IF-13"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "14"
+  name:
+    value: "IF-14"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "15"
+  name:
+    value: "IF-15"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "16"
+  name:
+    value: "IF-16"
+interface:
+  value: "17"
+  name:
+    value: "IF-17"
+interface:
+  value: "18"
+  name:
+    value: "IF-18"
+interface:
+  value: "19"
+  name:
+    value: "IF-19"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "20"
+  name:
+    value: "IF-20"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "21"
+  name:
+    value: "IF-21"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "22"
+  name:
+    value: "IF-22"
+interface:
+  value: "23"
+  name:
+    value: "IF-23"
+interface:
+  value: "24"
+  name:
+    value: "IF-24"
+interface:
+  value: "25"
+  name:
+    value: "IF-25"
+  speed_duplex:
+    value: "100-full"
+interface:
+  value: "26"
+  name:
+    value: "IF-26"
+  speed_duplex:
+    value: "100-full"
+snmp_server:
+  community:
+  value: "SNMP-COM1"
+  operator:
+  unrestricted:
+snmp_server:
+  community:
+  value: "SNMP-COM2"
+  operator:
+snmp_server:
+  contact:
+  value: "SNMP-CONTACT"
+  location:
+  value: "LOCATION1"
+vlan:
+  value: "1"
+  name:
+    value: "DEFAULT_VLAN"
+  no:
+    untagged:
+    value: "2-23,25-26"
+  untagged:
+    value: "1,24,27-28"
+  no:
+    ip:
+    address:
+vlan:
+  value: "92"
+  name:
+    value: "VLAN 92 seg"
+  untagged:
+    value: "23"
+  tagged:
+    value: "1"
+  ip:
+    address:
+    value: "10.5.17.194"
+    value: "255.255.248.0"
+vlan:
+  value: "401"
+  name:
+    value: "VLAN 401 seg"
+  untagged:
+    value: "2"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "402"
+  name:
+    value: "VLAN 402 seg"
+  untagged:
+    value: "3"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "403"
+  name:
+    value: "VLAN 403 seg"
+  untagged:
+    value: "4"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "404"
+  name:
+    value: "VLAN 404 seg"
+  untagged:
+    value: "5"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "405"
+  name:
+    value: "VLAN 405 seg"
+  untagged:
+    value: "6"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "406"
+  name:
+    value: "VLAN 406 seg"
+  untagged:
+    value: "7"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "407"
+  name:
+    value: "VLAN 407 seg"
+  untagged:
+    value: "8"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "409"
+  name:
+    value: "VLAN 409 seg"
+  untagged:
+    value: "10"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "410"
+  name:
+    value: "VLAN 410 seg"
+  untagged:
+    value: "11"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "411"
+  name:
+    value: "VLAN 411 seg"
+  untagged:
+    value: "12"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "412"
+  name:
+    value: "VLAN 412 seg"
+  untagged:
+    value: "13"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "413"
+  name:
+    value: "VLAN 413 seg"
+  untagged:
+    value: "14"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "414"
+  name:
+    value: "VLAN 414 seg"
+  untagged:
+    value: "15"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "416"
+  name:
+    value: "VLAN 416 seg"
+  untagged:
+    value: "17"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "417"
+  name:
+    value: "VLAN 417 seg"
+  untagged:
+    value: "16"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "418"
+  name:
+    value: "VLAN 418 seg"
+  untagged:
+    value: "18"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "419"
+  name:
+    value: "VLAN 419 seg"
+  untagged:
+    value: "19"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "420"
+  name:
+    value: "VLAN 420 seg"
+  untagged:
+    value: "20"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "421"
+  name:
+    value: "VLAN 421 seg"
+  untagged:
+    value: "21"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "422"
+  name:
+    value: "VLAN 422 seg"
+  untagged:
+    value: "22"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "423"
+  name:
+    value: "VLAN 423 seg"
+  untagged:
+    value: "9"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "424"
+  name:
+    value: "VLAN 424 seg"
+  untagged:
+    value: "25"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+vlan:
+  value: "427"
+  name:
+    value: "VLAN 427 seg"
+  untagged:
+    value: "26"
+  tagged:
+    value: "1,24"
+  no:
+    ip:
+    address:
+management_vlan:
+  value: "92"
+spanning_tree:
+  value: "1"
+  admin_edge_port:
+spanning_tree:
+  value: "1"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "2"
+  admin_edge_port:
+spanning_tree:
+  value: "2"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "3"
+  admin_edge_port:
+spanning_tree:
+  value: "3"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "4"
+  admin_edge_port:
+spanning_tree:
+  value: "4"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "5"
+  admin_edge_port:
+spanning_tree:
+  value: "5"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "6"
+  admin_edge_port:
+spanning_tree:
+  value: "6"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "7"
+  admin_edge_port:
+spanning_tree:
+  value: "7"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "8"
+  admin_edge_port:
+spanning_tree:
+  value: "8"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "9"
+  admin_edge_port:
+spanning_tree:
+  value: "9"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "10"
+  admin_edge_port:
+spanning_tree:
+  value: "10"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "11"
+  admin_edge_port:
+spanning_tree:
+  value: "11"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "12"
+  admin_edge_port:
+spanning_tree:
+  value: "12"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "13"
+  admin_edge_port:
+spanning_tree:
+  value: "13"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "14"
+  admin_edge_port:
+spanning_tree:
+  value: "14"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "15"
+  admin_edge_port:
+spanning_tree:
+  value: "15"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "16"
+  admin_edge_port:
+spanning_tree:
+  value: "16"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "17"
+  admin_edge_port:
+spanning_tree:
+  value: "17"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "18"
+  admin_edge_port:
+spanning_tree:
+  value: "18"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "19"
+  admin_edge_port:
+spanning_tree:
+  value: "19"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "20"
+  admin_edge_port:
+spanning_tree:
+  value: "20"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "21"
+  admin_edge_port:
+spanning_tree:
+  value: "21"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "22"
+  admin_edge_port:
+spanning_tree:
+  value: "22"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "23"
+  admin_edge_port:
+spanning_tree:
+  value: "23"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "24"
+  admin_edge_port:
+spanning_tree:
+  value: "24"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "25"
+  admin_edge_port:
+spanning_tree:
+  value: "25"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "26"
+  admin_edge_port:
+spanning_tree:
+  value: "26"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "27"
+  admin_edge_port:
+spanning_tree:
+  value: "27"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+spanning_tree:
+  value: "28"
+  admin_edge_port:
+spanning_tree:
+  value: "28"
+  root_guard:
+  bpdu_filter:
+  bpdu_protection:
+no:
+  tftp:
+  server:
+fastboot:
+loop_protect:
+  disable_timer:
+  value: "60"
+no:
+  dhcp:
+  config_file_update:
+no:
+  dhcp:
+  image_file_update:
+password:
+  manager:
+password:
+  operator:

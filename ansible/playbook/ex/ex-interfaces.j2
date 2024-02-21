@@ -1,0 +1,87 @@
+{% if interfaces.interface_range is defined %}
+  {% for range in interfaces.interface_range %}
+    {% for member in range.member %}
+set interfaces interface-range {{ range.name }} member {{ member.name }}
+    {% endfor %}
+    {% if range.unit is defined %}
+      {% set unit = range.unit %}
+set interfaces interface-range {{ range.name }} unit {{ unit.name }} description "{{ unit.description }}"
+      {% if unit.family is defined %}
+        {% set family = unit.family %}
+        {% if family.ethernet_switching is defined %}
+set interfaces interface-range {{ range.name }} unit {{ unit.name }} family ethernet-switching port_mode {{ family.ethernet_switching.port_mode }}
+          {% for members in family.ethernet_switching.vlan.members %}
+set interfaces interface-range {{ range.name }} unit {{ unit.name }} family ethernet-switching vlan members {{ members.name }}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    {% else %}
+set interfaces interface-range {{ range.name }} description "{{ range.description }}"
+set interfaces interface-range {{ range.name }} ether-options ieee_802.3ad {{ range.ether_options.ieee_802_3ad.bundle }}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% for interface in interfaces.interface %}
+  {% if interface.description is defined %}
+set interfaces {{ interface.name }} description "{{ interface.description }}"
+  {% endif %}
+  {% if interface.disable is defined %}
+set interfaces {{ interface.name }} disable
+  {% endif %}
+  {% if interface.aggregated_ether_options is defined %}
+    {% set options = interface.aggregated_ether_options %}
+set interfaces {{ interface.name }} aggregated-ether-options link-speed {{ options.link_speed }}
+    {% if options.lacp is defined %}
+      {% if options.lacp.active is defined %}
+set interfaces {{ interface.name }} aggregated-ether-options lacp active
+      {% endif %}
+      {% if options.lacp.periodic is defined %}
+set interfaces {{ interface.name }} aggregated-ether-options lacp periodic {{ options.lacp.periodic }}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {% if interface.unit is defined %}
+    {% set unit = interface.unit %}
+    {% if unit.description is defined %}
+set interfaces {{ interface.name }} unit {{ unit.name }} description {{ unit.description }}
+    {% endif %}
+    {% if unit.arp_resp is defined %}
+      {% if unit.arp_resp.restricted is defined %}
+set interfaces {{ interface.name }} unit {{ unit.name }} arp-resp restricted
+      {% endif %}
+    {% endif %}
+    {% if unit.family is defined %}
+      {% set family = unit.family %}
+      {% if family.ethernet_switching is defined %}
+set interfaces {{ interface.name }} unit {{ unit.name }} family ethernet-switching port-mode {{ family.ethernet_switching.port_mode }}
+        {% for members in family.ethernet_switching.vlan.members %}
+set interfaces {{ interface.name }} unit {{ unit.name }} family ethernet-switching vlan members {{ members.name }}
+        {% endfor %}
+      {% elif family.inet is defined %}
+        {% if family.inet.address is defined %}
+          {% set address = family.inet.address %}
+          {% if address.vrrp_group is defined %}
+            {% for vrrp in address.vrrp_group %}
+set interfaces {{ interface.name }} unit {{ unit.name }} family inet address {{ address.name }} vrrp-group {{ vrrp.name }} virtual-address {{ vrrp.virtual_address }}
+set interfaces {{ interface.name }} unit {{ unit.name }} family inet address {{ address.name }} vrrp-group {{ vrrp.name }} priority {{ vrrp.priority }}
+              {% if vrrp.advertise_interval is defined %}
+set interfaces {{ interface.name }} unit {{ unit.name }} family inet address {{ address.name }} vrrp-group {{ vrrp.name }} advertise-interval {{ vrrp.advertise_interval }}
+              {% endif %}
+              {% if vrrp.preempt is defined %}
+set interfaces {{ interface.name }} unit {{ unit.name }} family inet address {{ address.name }} vrrp-group {{ vrrp.name }} preempt hold-time {{ vrrp.preempt.hold_time }}
+              {% endif %}
+set interfaces {{ interface.name }} unit {{ unit.name }} family inet address {{ address.name }} vrrp-group {{ vrrp.name }} accept-data
+set interfaces {{ interface.name }} unit {{ unit.name }} family inet address {{ address.name }} vrrp-group {{ vrrp.name }} authentication-type {{ vrrp.authentication_type }}
+set interfaces {{ interface.name }} unit {{ unit.name }} family inet address {{ address.name }} vrrp-group {{ vrrp.name }} authentication-key "{{ vrrp.authentication_key }}"
+              {% if vrrp.track is defined %}
+set interfaces {{ interface.name }} unit {{ unit.name }} family inet address {{ address.name }} vrrp-group {{ vrrp.name }} track route {{ vrrp.track.route.route_address }} routing-instance {{ vrrp.track.route.routing_instance }} priority-cost {{ vrrp.track.route.priority_cost }}
+              {% endif %}
+            {% endfor %}
+          {% else %}
+set interfaces {{ interface.name }} unit {{ unit.name }} family inet address {{ address.name }}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}

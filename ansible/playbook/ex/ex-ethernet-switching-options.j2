@@ -1,0 +1,11 @@
+{% if ethernet_switching_options is defined %}
+  {% if ethernet_switching_options.nonstop_bridging is defined %}
+set ethernet-switching-options nonstop-bridging
+  {% endif %}
+  {% if ethernet_switching_options.port_error_disable is defined %}
+set ethernet-switching-options port-error-disable disable-timeout {{ ethernet_switching_options.port_error_disable.disable_timeout }}
+  {% endif %}
+  {% if ethernet_switching_options.storm_control is defined %}
+set ethernet-switching-options storm-control interface {{ ethernet_switching_options.storm_control.interface.name }}
+  {% endif %}
+{% endif %}

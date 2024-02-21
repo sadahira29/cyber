@@ -1,0 +1,40 @@
+{% if protocols is defined %}
+  {% if protocols.mstp.disable is defined %}
+set protocols mstp disable
+  {% endif %}
+  {% if protocols.vstp.vlan_group is defined %}
+    {% for group in protocols.vstp.vlan_group.group %}
+      {% for vlan in group.vlan %}
+set protocols vstp vlan-group group {{ group.name }} vlan {{ vlan.name }}
+      {% endfor %}
+set protocols vstp vlan-group group {{ group.name }} bridge-priority {{ group.bridge_priority }}
+set protocols vstp vlan-group group {{ group.name }} hello-time {{ group.hello_time }}
+      {% for interface in group.interface %}
+        {% if interface.disable is defined %}
+set protocols vstp vlan-group group {{ group.name }} interface {{ interface.name }} disable
+        {% else %}
+	  {% if interface.priority is defined %}
+set protocols vstp vlan-group group {{ group.name }} interface {{ interface.name }} priority {{ interface.priority }}
+          {% endif %}
+set protocols vstp vlan-group group {{ group.name }} interface {{ interface.name }} cost {{ interface.cost }}
+set protocols vstp vlan-group group {{ group.name }} interface {{ interface.name }} mode {{ interface.mode }}
+set protocols vstp vlan-group group {{ group.name }} interface {{ interface.name }} bpdu_timeout_action log
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+  {% if protocols.vstp.vlan is defined %}
+    {% set vlan = protocols.vstp.vlan %}
+    {% for interface in vlan.interface %}
+      {% if interface.disable is defined %}
+set protocols vstp vlan {{ vlan.name }} interface {{ interface.name }} disable
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if protocols.lldp is defined %}
+set protocols lldp interface {{ protocols.lldp.interface.name }}
+  {% endif %}
+  {% if protocols.lldp_med is defined %}
+set protocols lldp_med interface {{ protocols.lldp_med.interface.name }}
+  {% endif %}
+{% endif %}

@@ -1,0 +1,429 @@
+HOSTNAME# show running-config structured
+
+Running configuration:
+
+; J9775A Configuration Editor; Created on release #YA.16.10.0013
+; Ver #14:41.44.00.04.19.02.13.98.82.34.61.18.28.f3.84.9c.63.ff.37.27:05
+hostname "HOSTNAME"
+time timezone 540
+ip route 10.6.1.0 255.255.255.0 10.5.16.250
+ip route 10.6.2.0 255.255.255.0 10.5.17.250
+ip route 10.6.3.0 255.255.255.0 10.5.17.250
+ip route 10.6.4.0 255.255.255.0 10.5.17.250
+sntp server priority 1 10.5.16.193
+sntp server priority 2 10.5.17.193
+sntp server priority 3 10.5.18.193
+snmp-server community "public" unrestricted
+snmp-server community "SNMP-COM1" operator unrestricted
+snmp-server community "SNMP-COM2" operator
+snmp-server contact "SNMP-CONTACT" location "LOCATION1"
+interface 1
+   name "IF-1"
+   tagged vlan 92,401-407,409-414,416-424,427
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 2
+   name "IF-2"
+   untagged vlan 401
+   no cdp enable
+   exit
+interface 3
+   name "IF-3"
+   untagged vlan 402
+   no cdp enable
+   exit
+interface 4
+   name "IF-4"
+   untagged vlan 403
+   no cdp enable
+   exit
+interface 5
+   name "IF-5"
+   untagged vlan 404
+   no cdp enable
+   exit
+interface 6
+   name "IF-6"
+   untagged vlan 405
+   no cdp enable
+   exit
+interface 7
+   name "IF-7"
+   untagged vlan 406
+   no cdp enable
+   exit
+interface 8
+   name "IF-8"
+   speed-duplex 100-full
+   untagged vlan 407
+   no cdp enable
+   exit
+interface 9
+   name "IF-9"
+   speed-duplex 100-full
+   untagged vlan 423
+   no cdp enable
+   exit
+interface 10
+   name "IF-10"
+   untagged vlan 409
+   no cdp enable
+   exit
+interface 11
+   name "IF-11"
+   speed-duplex 100-full
+   untagged vlan 410
+   no cdp enable
+   exit
+interface 12
+   name "IF-12"
+   speed-duplex 100-full
+   untagged vlan 411
+   no cdp enable
+   exit
+interface 13
+   name "IF-13"
+   speed-duplex 100-full
+   untagged vlan 412
+   no cdp enable
+   exit
+interface 14
+   name "IF-14"
+   speed-duplex 100-full
+   untagged vlan 413
+   no cdp enable
+   exit
+interface 15
+   name "IF-15"
+   speed-duplex 100-full
+   untagged vlan 414
+   no cdp enable
+   exit
+interface 16
+   name "IF-16"
+   untagged vlan 417
+   no cdp enable
+   exit
+interface 17
+   name "IF-17"
+   untagged vlan 416
+   no cdp enable
+   exit
+interface 18
+   name "IF-18"
+   untagged vlan 418
+   no cdp enable
+   exit
+interface 19
+   name "IF-19"
+   speed-duplex 100-full
+   untagged vlan 419
+   no cdp enable
+   exit
+interface 20
+   name "IF-20"
+   speed-duplex 100-full
+   untagged vlan 420
+   no cdp enable
+   exit
+interface 21
+   name "IF-21"
+   speed-duplex 100-full
+   untagged vlan 421
+   no cdp enable
+   exit
+interface 22
+   name "IF-22"
+   untagged vlan 422
+   no cdp enable
+   exit
+interface 23
+   name "IF-23"
+   untagged vlan 92
+   no cdp enable
+   exit
+interface 24
+   name "IF-24"
+   tagged vlan 401-407,409-414,416-424,427
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 25
+   name "IF-25"
+   speed-duplex 100-full
+   untagged vlan 424
+   no cdp enable
+   exit
+interface 26
+   name "IF-26"
+   speed-duplex 100-full
+   untagged vlan 427
+   no cdp enable
+   exit
+interface 27
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 28
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 29
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 30
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 31
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 32
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 33
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 34
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 35
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 36
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 37
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 38
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 39
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 40
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 41
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 42
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 43
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 44
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 45
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 46
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 47
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 48
+   untagged vlan 92
+   no cdp enable
+   exit
+interface 49
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 50
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 51
+   untagged vlan 1
+   no cdp enable
+   exit
+interface 52
+   untagged vlan 1
+   no cdp enable
+   exit
+vlan 1
+   name "DEFAULT_VLAN"
+   no untagged 2-23,25-26,48
+   untagged 1,24,27-47,49-52
+   no ip address
+   exit
+vlan 92
+   name "VLAN 92 seg"
+   untagged 23,48
+   tagged 1
+   ip address 192.168.66.88 255.255.255.0
+   exit
+vlan 401
+   name "VLAN 401 seg"
+   untagged 2
+   tagged 1,24
+   no ip address
+   exit
+vlan 402
+   name "VLAN 402 seg"
+   untagged 3
+   tagged 1,24
+   no ip address
+   exit
+vlan 403
+   name "VLAN 403 seg"
+   untagged 4
+   tagged 1,24
+   no ip address
+   exit
+vlan 404
+   name "VLAN 404 seg"
+   untagged 5
+   tagged 1,24
+   no ip address
+   exit
+vlan 405
+   name "VLAN 405 seg"
+   untagged 6
+   tagged 1,24
+   no ip address
+   exit
+vlan 406
+   name "VLAN 406 seg"
+   untagged 7
+   tagged 1,24
+   no ip address
+   exit
+vlan 407
+   name "VLAN 407 seg"
+   untagged 8
+   tagged 1,24
+   no ip address
+   exit
+vlan 409
+   name "VLAN 409 seg"
+   untagged 10
+   tagged 1,24
+   no ip address
+   exit
+vlan 410
+   name "VLAN 410 seg"
+   untagged 11
+   tagged 1,24
+   no ip address
+   exit
+vlan 411
+   name "VLAN 411 seg"
+   untagged 12
+   tagged 1,24
+   no ip address
+   exit
+vlan 412
+   name "VLAN 412 seg"
+   untagged 13
+   tagged 1,24
+   no ip address
+   exit
+vlan 413
+   name "VLAN 413 seg"
+   untagged 14
+   tagged 1,24
+   no ip address
+   exit
+vlan 414
+   name "VLAN 414 seg"
+   untagged 15
+   tagged 1,24
+   no ip address
+   exit
+vlan 416
+   name "VLAN 416 seg"
+   untagged 17
+   tagged 1,24
+   no ip address
+   exit
+vlan 417
+   name "VLAN 417 seg"
+   untagged 16
+   tagged 1,24
+   no ip address
+   exit
+vlan 418
+   name "VLAN 418 seg"
+   untagged 18
+   tagged 1,24
+   no ip address
+   exit
+vlan 419
+   name "VLAN 419 seg"
+   untagged 19
+   tagged 1,24
+   no ip address
+   exit
+vlan 420
+   name "VLAN 420 seg"
+   untagged 20
+   tagged 1,24
+   no ip address
+   exit
+vlan 421
+   name "VLAN 421 seg"
+   untagged 21
+   tagged 1,24
+   no ip address
+   exit
+vlan 422
+   name "VLAN 422 seg"
+   untagged 22
+   tagged 1,24
+   no ip address
+   exit
+vlan 423
+   name "VLAN 423 seg"
+   untagged 9
+   tagged 1,24
+   no ip address
+   exit
+vlan 424
+   name "VLAN 424 seg"
+   untagged 25
+   tagged 1,24
+   no ip address
+   exit
+vlan 427
+   name "VLAN 427 seg"
+   untagged 26
+   tagged 1,24
+   no ip address
+   exit
+no cdp run
+no cdp enable 1-52
+max-vlans 512
+management-vlan 92
+no tftp server
+fastboot
+loop-protect disable-timer 60
+no dhcp config-file-update
+no dhcp image-file-update
+dos-filter
+password manager
+password operator

@@ -1,0 +1,26 @@
+{% for vlan in vlans.vlan %}
+vlan {{ vlan.vlan_id }}
+   name "{{ vlan.name }}"
+  {% if vlan.tagged is defined %}
+   tagged {{ vlan.tagged }}
+  {% endif %}
+  {% if vlan.no_tagged is defined %}
+   no tagged {{ vlan.no_tagged }}
+  {% endif %}
+  {% if vlan.untagged is defined %}
+   untagged {{ vlan.untagged }}
+  {% endif %}
+  {% if vlan.no_untagged is defined %}
+   no untagged {{ vlan.no_untagged }}
+  {% endif %}
+  {% if vlan.ip_address is defined %}
+   ip address {{ vlan.ip_address }} {{ vlan.mask }}
+  {% endif %}
+  {% if vlan.no_ip_address is defined %}
+   no ip address
+  {% endif %}
+   exit
+{% endfor %}
+{% if vlans.management_vlan is defined %}
+management-vlan {{ vlans.management_vlan }}
+{% endif %}

@@ -1,0 +1,11 @@
+{% if protocols is defined %}
+{% set area = protocols.ospf.area %}
+{% for interface in area.interface %}
+  {% if interface.passive is defined %}
+set protocols ospf area {{ area.name }} interface {{ interface.name }} passive
+  {% endif %}
+  {% if interface.metric is defined %}
+set protocols ospf area {{ area.name }} interface {{ interface.name }} metric {{ interface.metric }}
+  {% endif %}
+{% endfor %}
+{% endif %}

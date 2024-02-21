@@ -1,0 +1,8 @@
+{% if virtual_chassis is defined %}
+  {% if virtual_chassis.no_split_detection is defined %}
+set virtual-chassis no-split-detection
+  {% endif %}
+  {% for member in virtual_chassis.member %}
+set virtual-chassis member {{ member.name }} mastership-priority {{ member.mastership_priority }}
+  {% endfor %}
+{% endif %}

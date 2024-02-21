@@ -1,0 +1,13 @@
+{% if version is defined %}
+set version {{ version }}
+{% endif %}
+{% include "ex-system.j2" %}
+{% include "ex-chassis.j2" %}
+{% include "ex-interfaces.j2" %}
+{% include "ex-snmp.j2" %}
+{% include "ex-routing-options.j2" %}
+{% include "ex-protocols.j2" %}
+{% include "ex-ethernet-switching-options.j2" %}
+{% include "ex-vlans.j2" %}
+{% include "ex-poe.j2" %}
+{% include "ex-virtual-chassis.j2" %}

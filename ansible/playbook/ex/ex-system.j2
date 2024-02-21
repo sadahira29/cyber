@@ -1,0 +1,87 @@
+set system host-name {{ system.host_name }}
+{% if system.domain_name is defined %}
+set system domain-name {{ system.domain_name }}
+{% endif %}
+set system time-zone {{ system.time_zone }}
+{% if system.root_authentication is defined %}
+set system root-authentication encrypted-password "{{ system.root_authentication.encrypted_password }}"
+{% endif %}
+{% if system.login is defined %}
+  {% for user in system.login.user %}
+set system login user {{ user.name }} uid {{ user.uid }}
+set system login user {{ user.name }} class {{ user.class }}
+    {% if user.authentication.encrypted_password == 'removed' %}
+set system login user {{ user.name }} authentication encrypted-password removed
+    {% else %}
+set system login user {{ user.name }} authentication encrypted-password "{{ user.authentication.encrypted_password }}"
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if system.services is defined %}
+  {% set svcs = system.services %}
+  {% if svcs.ssh is defined %}
+set system services ssh root-login {{ svcs.ssh.root_login }}
+  {% endif %}
+  {% if svcs.telnet is defined %}
+set system services telnet
+  {% endif %}
+  {% if svcs.xnm_clear_text is defined %}
+set system services xnm-clear-text
+  {% endif %}
+  {% if svcs.web_management is defined %}
+    {% set webman = svcs.web_management %}
+    {% if webman.http is defined %}
+      {% if webman.http.interface is defined %}
+set system services web-management http interface {{ webman.http.interface }}
+      {% else %}
+set system services web-management http
+      {% endif %}
+    {% endif %}
+    {% if webman.https is defined %}
+      {% if webman.https.system_generated_certificate is defined %}
+set system services web-management https system-generated-certificate
+      {% endif %}
+      {% if webman.https.interface is defined %}
+set system services web-management https interface {{ webman.https.interface }}
+      {% else %}
+set system services web-management https
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% if system.syslog is defined %}
+  {% set slg = system.syslog %}
+  {% if slg.archive is defined %}
+set system syslog archive size {{ slg.archive.size }}
+set system syslog archive files {{ slg.archive.files }}
+  {% endif %}
+  {% if slg.user is defined %}
+    {% for contents in slg.user.contents %}
+      {% if contents.emergency is defined %}
+set system syslog user {{ slg.user.name }} {{ contents.name }} emergency
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% for file in slg.file %}
+    {% for contents in file.contents %}
+      {% if contents.critical is defined %}
+set system syslog file {{ file.name }} {{ contents.name }} critical
+      {% elif contents.info is defined %}
+set system syslog file {{ file.name }} {{ contents.name }} info
+      {% elif contents.error is defined %}
+set system syslog file {{ file.name }} {{ contents.name }} error
+      {% elif contents.notice is defined %}
+set system syslog file {{ file.name }} {{ contents.name }} notice
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+{% if system.ntp is defined %}
+  {% for server in system.ntp.server %}
+    {% if server.prefer is defined %}
+set system ntp server {{ server.name }} prefer
+    {% else %}
+set system ntp server {{ server.name }}
+    {% endif %}
+  {% endfor %}
+{% endif %}

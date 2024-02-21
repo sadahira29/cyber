@@ -1,0 +1,118 @@
+hostname "HOSTNAME"
+sntp server priority 2 10.5.16.193
+sntp server priority 1 10.5.17.193
+sntp server priority 2 10.5.18.193
+time timezone Asia/Tokyo
+ip route 10.6.2.0 255.255.255.0 10.5.17.250
+ip route 10.6.3.0 255.255.255.0 10.5.17.250
+ip route 10.6.4.0 255.255.255.0 10.5.17.250
+ip route 10.6.1.0 255.255.255.0 10.5.16.250
+interface ge-0/0/0
+   exit
+interface ge-0/0/1
+   exit
+interface ge-0/0/2
+   name "IF-GE-0-0-2-NAME"
+   exit
+interface ge-0/0/3
+   name "IF-GE-0-0-3-NAME"
+   exit
+interface ge-0/0/4
+   name "IF-GE-0-0-4-NAME"
+   exit
+interface ge-0/0/5
+   name "IF-GE-0-0-5-NAME"
+   exit
+interface ge-0/0/6
+   name "IF-GE-0-0-6-NAME"
+   exit
+interface ge-0/0/7
+   name "IF-GE-0-0-7-NAME"
+   exit
+interface ge-0/0/8
+   name "IF-GE-0-0-8-NAME"
+   exit
+interface ge-0/0/9
+   exit
+interface ge-0/0/10
+   name "IF-GE-0-0-10-NAME"
+   exit
+interface ge-0/0/11
+   name "IF-GE-0-0-11-NAME"
+   exit
+interface ge-0/0/12
+   name "IF-GE-0-0-12-NAME"
+   exit
+interface ge-0/0/13
+   name "IF-GE-0-0-13-NAME"
+   exit
+interface ge-0/0/14
+   name "IF-GE-0-0-14-NAME"
+   exit
+interface ge-0/0/15
+   name "IF-GE-0-0-15-NAME"
+   exit
+interface ge-0/0/16
+   name "IF-GE-0-0-16-NAME"
+   exit
+interface ge-0/0/17
+   name "IF-GE-0-0-17-NAME"
+   exit
+interface ge-0/0/18
+   name "IF-GE-0-0-18-NAME"
+   exit
+interface ge-0/0/19
+   name "IF-GE-0-0-19-NAME"
+   exit
+interface ge-0/0/20
+   exit
+interface ge-0/0/22
+   name "IF-GE-0-0-22-NAME"
+   exit
+interface ge-0/0/23
+   name "IF-GE-0-0-23-NAME"
+   exit
+interface ge-0/1/0
+   exit
+interface ge-0/1/1
+   exit
+interface ge-0/1/2
+   exit
+interface ge-0/1/3
+   exit
+interface ae0
+   name "IF-AE-0-NAME"
+   exit
+interface me0
+   exit
+snmp-server contact "CONTACT" location "LOCATION4"
+vlan 106
+   name "VLAN-106-seg"
+   exit
+vlan 90
+   name "VLAN-90-seg"
+   exit
+vlan 91
+   name "VLAN-91-seg"
+   exit
+vlan 92
+   name "VLAN-92-seg"
+   exit
+vlan 93
+   name "VLAN-93"
+   exit
+vlan 94
+   name "VLAN-94"
+   exit
+vlan 95
+   name "VLAN-95"
+   exit
+vlan 96
+   name "VLAN-96"
+   exit
+vlan 97
+   name "VLAN-97"
+   exit
+vlan 98
+   name "VLAN-98"
+   exit

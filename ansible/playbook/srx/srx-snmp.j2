@@ -1,0 +1,51 @@
+{% if snmp.system_name is defined %}
+set snmp name {{ snmp.system_name }}
+{% endif %}
+set snmp location {{ snmp.location }}
+set snmp contact {{ snmp.contact }}
+{% if snmp.interface is defined %}
+set snmp interface {{ snmp.interface }}
+{% endif %}
+{% if snmp.community.authorization is defined %}
+set snmp community {{ snmp.community.name }} authorization {{ snmp.community.authorization }}
+{% endif %}
+{% if snmp.trap_group is defined %}
+set snmp trap-group {{ snmp.trap_group.name }} version {{ snmp.trap_group.version }}
+  {% set categories = snmp.trap_group.categories %}
+  {% if categories.authentication is defined %}
+set snmp trap-group {{ snmp.trap_group.name }} categories authentication
+  {% endif %}
+  {% if categories.chassis is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories chassis
+  {% endif %}
+  {% if categories.link is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories link
+  {% endif %}
+  {% if categories.remote_operations is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories remote-operations
+  {% endif %}
+  {% if categories.routing is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories routing
+  {% endif %}
+  {% if categories.startup is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories startup
+  {% endif %}
+  {% if categories.rmon_alarm is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories rmon-alarm
+  {% endif %}
+  {% if categories.vrrp_events is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories vrrp-events
+  {% endif %}
+  {% if categories.configuration is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories configuration
+  {% endif %}
+  {% if categories.services is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories services
+  {% endif %}
+  {% if categories.chassis_cluster is defined  %}
+set snmp trap-group {{ snmp.trap_group.name }} categories chassis-cluster
+  {% endif %}
+  {% for targets in snmp.trap_group.targets %}
+set snmp trap-group {{ snmp.trap_group.name }} targets {{ targets.name }}
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,12 @@
+---
+- name: template TEST
+  hosts: localhost
+  roles:
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: 'template'
+    template:
+      src: ex.j2
+      dest: "{{ fname }}_ex_conf.txt"
+      lstrip_blocks: yes

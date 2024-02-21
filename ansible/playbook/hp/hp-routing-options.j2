@@ -1,0 +1,3 @@
+{% for route in routing_options.static.route %}
+ip route {{ route.addr }} {{ route.mask }} {{ route.next_hop }}
+{% endfor %}

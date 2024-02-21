@@ -1,0 +1,8 @@
+{% if chassis is defined %}
+  {% if chassis.redundancy is defined %}
+set chassis redundancy graceful_switchover
+  {% endif %}
+  {% if chassis.aggregated_devices is defined %}
+set chassis aggregated-devices ethernet device-count {{ chassis.aggregated_devices.ethernet.device_count }}
+  {% endif %}
+{% endif %}

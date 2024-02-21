@@ -1,0 +1,12 @@
+{% for community in snmp.community %}
+  {% if community.operator is defined %}
+    {% if community.unrestricted is defined %}
+snmp-server community "{{ community.name}}" operator unrestricted
+    {% else %}
+snmp-server community "{{ community.name}}" operator
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% if snmp.contact is defined %}
+snmp-server contact "{{ snmp.contact }}" location "{{ snmp.location }}"
+{% endif %}

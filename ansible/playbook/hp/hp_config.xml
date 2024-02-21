@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HP_config>
+<hostname>
+  <value>HOSTNAME</value>
+</hostname>
+<dos-filter>
+</dos-filter>
+<no>
+  <cdp/>
+  <run/>
+</no>
+<no>
+  <cdp/>
+  <enable/>
+  <value>1-28</value>
+</no>
+<max-vlans>
+  <value>512</value>
+</max-vlans>
+<sntp>
+  <server/>
+  <priority/>
+  <value>1</value>
+  <value>10.5.16.193</value>
+</sntp>
+<sntp>
+  <server/>
+  <priority/>
+  <value>2</value>
+  <value>10.5.17.193</value>
+</sntp>
+<sntp>
+  <server/>
+  <priority/>
+  <value>3</value>
+  <value>10.5.18.193</value>
+</sntp>
+<time>
+  <timezone/>
+  <value>540</value>
+</time>
+<ip>
+  <route/>
+  <value>10.6.1.0</value>
+  <value>255.255.255.0</value>
+  <value>10.5.16.250</value>
+</ip>
+<ip>
+  <route/>
+  <value>10.6.2.0</value>
+  <value>255.255.255.0</value>
+  <value>10.5.17.250</value>
+</ip>
+<ip>
+  <route/>
+  <value>10.6.3.0</value>
+  <value>255.255.255.0</value>
+  <value>10.5.17.250</value>
+</ip>
+<ip>
+  <route/>
+  <value>10.6.4.0</value>
+  <value>255.255.255.0</value>
+  <value>10.5.17.250</value>
+</ip>
+<interface>
+  <value>1</value>
+  <name><value>IF-1</value></name>
+</interface>
+<interface>
+  <value>2</value>
+  <name><value>IF-2</value></name>
+</interface>
+<interface>
+  <value>3</value>
+  <name><value>IF-3</value></name>
+</interface>
+<interface>
+  <value>4</value>
+  <name><value>IF-4</value></name>
+</interface>
+<interface>
+  <value>5</value>
+  <name><value>IF-5</value></name>
+</interface>
+<interface>
+  <value>6</value>
+  <name><value>IF-6</value></name>
+</interface>
+<interface>
+  <value>7</value>
+  <name><value>IF-7</value></name>
+</interface>
+<interface>
+  <value>8</value>
+  <name><value>IF-8</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>9</value>
+  <name><value>IF-9</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>10</value>
+  <name><value>IF-10</value></name>
+</interface>
+<interface>
+  <value>11</value>
+  <name><value>IF-11</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>12</value>
+  <name><value>IF-12</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>13</value>
+  <name><value>IF-13</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>14</value>
+  <name><value>IF-14</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>15</value>
+  <name><value>IF-15</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>16</value>
+  <name><value>IF-16</value></name>
+</interface>
+<interface>
+  <value>17</value>
+  <name><value>IF-17</value></name>
+</interface>
+<interface>
+  <value>18</value>
+  <name><value>IF-18</value></name>
+</interface>
+<interface>
+  <value>19</value>
+  <name><value>IF-19</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>20</value>
+  <name><value>IF-20</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>21</value>
+  <name><value>IF-21</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>22</value>
+  <name><value>IF-22</value></name>
+</interface>
+<interface>
+  <value>23</value>
+  <name><value>IF-23</value></name>
+</interface>
+<interface>
+  <value>24</value>
+  <name><value>IF-24</value></name>
+</interface>
+<interface>
+  <value>25</value>
+  <name><value>IF-25</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<interface>
+  <value>26</value>
+  <name><value>IF-26</value></name>
+  <speed-duplex><value>100-full</value></speed-duplex>
+</interface>
+<snmp-server>
+  <community/>
+  <value>SNMP-COM1</value>
+  <operator/>
+  <unrestricted/>
+</snmp-server>
+<snmp-server>
+  <community/>
+  <value>SNMP-COM2</value>
+  <operator/>
+</snmp-server>
+<snmp-server>
+  <contact/>
+  <value>SNMP-CONTACT</value>
+  <location/>
+  <value>LOCATION1</value>
+</snmp-server>
+<vlan>
+  <value>1</value>
+  <name><value>DEFAULT_VLAN</value></name>
+  <no><untagged/><value>2-23,25-26</value></no>
+  <untagged><value>1,24,27-28</value></untagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>92</value>
+  <name><value>VLAN 92 seg</value></name>
+  <untagged><value>23</value></untagged>
+  <tagged><value>1</value></tagged>
+  <ip><address/><value>10.5.17.194</value><value>255.255.248.0</value></ip>
+</vlan>
+<vlan>
+  <value>401</value>
+  <name><value>VLAN 401 seg</value></name>
+  <untagged><value>2</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>402</value>
+  <name><value>VLAN 402 seg</value></name>
+  <untagged><value>3</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>403</value>
+  <name><value>VLAN 403 seg</value></name>
+  <untagged><value>4</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>404</value>
+  <name><value>VLAN 404 seg</value></name>
+  <untagged><value>5</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>405</value>
+  <name><value>VLAN 405 seg</value></name>
+  <untagged><value>6</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>406</value>
+  <name><value>VLAN 406 seg</value></name>
+  <untagged><value>7</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>407</value>
+  <name><value>VLAN 407 seg</value></name>
+  <untagged><value>8</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>409</value>
+  <name><value>VLAN 409 seg</value></name>
+  <untagged><value>10</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>410</value>
+  <name><value>VLAN 410 seg</value></name>
+  <untagged><value>11</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>411</value>
+  <name><value>VLAN 411 seg</value></name>
+  <untagged><value>12</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>412</value>
+  <name><value>VLAN 412 seg</value></name>
+  <untagged><value>13</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>413</value>
+  <name><value>VLAN 413 seg</value></name>
+  <untagged><value>14</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>414</value>
+  <name><value>VLAN 414 seg</value></name>
+  <untagged><value>15</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>416</value>
+  <name><value>VLAN 416 seg</value></name>
+  <untagged><value>17</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>417</value>
+  <name><value>VLAN 417 seg</value></name>
+  <untagged><value>16</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>418</value>
+  <name><value>VLAN 418 seg</value></name>
+  <untagged><value>18</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>419</value>
+  <name><value>VLAN 419 seg</value></name>
+  <untagged><value>19</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>420</value>
+  <name><value>VLAN 420 seg</value></name>
+  <untagged><value>20</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>421</value>
+  <name><value>VLAN 421 seg</value></name>
+  <untagged><value>21</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>422</value>
+  <name><value>VLAN 422 seg</value></name>
+  <untagged><value>22</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>423</value>
+  <name><value>VLAN 423 seg</value></name>
+  <untagged><value>9</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>424</value>
+  <name><value>VLAN 424 seg</value></name>
+  <untagged><value>25</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<vlan>
+  <value>427</value>
+  <name><value>VLAN 427 seg</value></name>
+  <untagged><value>26</value></untagged>
+  <tagged><value>1,24</value></tagged>
+  <no><ip/><address/></no>
+</vlan>
+<management-vlan>
+  <value>92</value>
+</management-vlan>
+<spanning-tree>
+  <value>1</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>1</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>2</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>2</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>3</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>3</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>4</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>4</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>5</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>5</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>6</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>6</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>7</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>7</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>8</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>8</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>9</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>9</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>10</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>10</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>11</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>11</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>12</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>12</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>13</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>13</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>14</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>14</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>15</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>15</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>16</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>16</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>17</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>17</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>18</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>18</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>19</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>19</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>20</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>20</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>21</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>21</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>22</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>22</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>23</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>23</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>24</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>24</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>25</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>25</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>26</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>26</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>27</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>27</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<spanning-tree>
+  <value>28</value>
+  <admin-edge-port/>
+</spanning-tree>
+<spanning-tree>
+  <value>28</value>
+  <root-guard/>
+  <bpdu-filter/>
+  <bpdu-protection/>
+</spanning-tree>
+<no>
+  <tftp/>
+  <server/>
+</no>
+<fastboot>
+</fastboot>
+<loop-protect>
+  <disable-timer/>
+  <value>60</value>
+</loop-protect>
+<no>
+  <dhcp/>
+  <config-file-update/>
+</no>
+<no>
+  <dhcp/>
+  <image-file-update/>
+</no>
+<password>
+  <manager/>
+</password>
+<password>
+  <operator/>
+</password>
+</HP_config>
