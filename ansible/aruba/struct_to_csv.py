@@ -3,47 +3,23 @@ import re
 import ipaddress
 import sys
 
-#======================================================
+#------------------------------------------------------
 # コマンドライン引数
 # Usage: struct_to_csv.py [device ID] [config struct file] [output directory path]
-#======================================================
+#------------------------------------------------------
 device_id = sys.argv[1]
 aruba_config = sys.argv[2]
 output_directry = sys.argv[3]
-
-#------------------------------------------------------
-# 関数の定義
-#------------------------------------------------------
-
-# リストからCSVに変換する関数
-def list_to_csv(csv_path, csv_headers, config_lists):
-    with open(csv_path, 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(csv_headers)
-        # リストを1つずつCSVに変換し書き込む
-        for config_list in config_lists:
-            writer.writerow(config_list)
-
-# サブネットマスクをプレフィックス長に変換する関数
-def get_prefix_len(ip_address, subnet_mask):
-    # IPv4アドレスオブジェクトを作成
-    address_obj = ipaddress.IPv4Address(ip_address)
-    # IPv4ネットワークオブジェクトを作成
-    network_obj = ipaddress.IPv4Network(f'{address_obj}/{subnet_mask}', strict=False)
-    # プレフィックス長を取得
-    prefix_len = network_obj.prefixlen
-    # プレフィックス長を返す
-    return prefix_len
 
 #------------------------------------------------------
 # 変数の定義
 #------------------------------------------------------
 
 # outputするCSVファイルのパス
-system_csv_path    = output_directry + 'System_ar.csv'
-interface_csv_path = output_directry + 'Interface_ar.csv'
-routing_csv_path   = output_directry + 'Routing_ar.csv'
-vlan_csv_path      = output_directry + 'Vlan_ar.csv'
+system_csv_path    = output_directry + 'System.csv'
+interface_csv_path = output_directry + 'Interface.csv'
+routing_csv_path   = output_directry + 'Routing.csv'
+vlan_csv_path      = output_directry + 'Vlan.csv'
 
 # 抽出した config を保存しておくリスト
 system_config    = []   # システム
@@ -87,6 +63,30 @@ vlan_headers = [
     'ip address',       # VLANのIPアドレス
     'ip address mask'   # VLANのIPアドレスのサブネットマスク
 ]
+
+#------------------------------------------------------
+# 関数の定義
+#------------------------------------------------------
+
+# リストからCSVに変換する関数
+def list_to_csv(csv_path, csv_headers, config_lists):
+    with open(csv_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(csv_headers)
+        # リストを1つずつCSVに変換し書き込む
+        for config_list in config_lists:
+            writer.writerow(config_list)
+
+# サブネットマスクをプレフィックス長に変換する関数
+def get_prefix_len(ip_address, subnet_mask):
+    # IPv4アドレスオブジェクトを作成
+    address_obj = ipaddress.IPv4Address(ip_address)
+    # IPv4ネットワークオブジェクトを作成
+    network_obj = ipaddress.IPv4Network(f'{address_obj}/{subnet_mask}', strict=False)
+    # プレフィックス長を取得
+    prefix_len = network_obj.prefixlen
+    # プレフィックス長を返す
+    return prefix_len
 
 #------------------------------------------------------
 # メインの処理

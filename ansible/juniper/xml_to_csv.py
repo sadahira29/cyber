@@ -186,9 +186,16 @@ def get_vlan_id(member_name, vlans):
 
 # リストからCSVに変換する関数
 def list_to_csv(csv_path, csv_headers, config_lists):
-    with open(csv_path, 'w', newline='') as f:
+    # 新規ファイルになるかどうか
+    newf = False
+    if not os.path.isfile(csv_path):
+        newf = True
+    # 追記モードでファイルをオープン．無ければ作成
+    with open(csv_path, 'a+', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(csv_headers)
+        # 新規ファイルならヘッダーを出力
+        if newf:
+            writer.writerow(csv_headers)
         # リストを1つずつCSVに変換し書き込む
         for config_list in config_lists:
             writer.writerow(config_list)
