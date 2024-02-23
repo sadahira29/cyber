@@ -1,10 +1,38 @@
-{% for interface in interfaces.interface %}
-interface {{ interface.name }}
-  {% if interface.description is defined %}
-   name "{{ interface.description }}"
-  {% endif %}
-  {% if interface.speed_duplex is defined %}
-   speed-duplex {{ interface.speed_duplex }}
-  {% endif %}
+{% set ns = namespace(port=0, name='', speed='', duplex='', negotiation='', ip_address='', ip_address_mask='', untag='', tags='', lacp_port='') %}
+{% for interface in Interface %}
+  {% if interface.port != ns.port %}
+    {% if ns.port != 0 %}
+interface {{ ns.port }}
+      {% if ns.name != ''%}
+   name "{{ ns.name }}"
+      {% endif %}
+      {% if ns.duplex != ''%}
+   speed-duplex {{ ns.duplex }}
+      {% endif %}
+      {% if ns.tags != ''%}
+   tagged vlan {{ ns.tags }}
+        {% set ns.tags = ''%}
+      {% endif %}
+      {% if ns.untag != '' %}
+   untagged vlan {{ ns.untag }}
+      {% endif %}
    exit
+    {% endif %}
+    {% set ns.port = interface.port %}
+  {% endif %}
+  {% set ns.name = interface.name %}
+  {% set ns.speed = interface.speed %}
+  {% set ns.duplex = interface.duplex %}
+  {% set ns.negotiation = interface.negotiation %}
+  {% set ns.ip_address = interface.ip_address %}
+  {% set ns.ip_address_mask = interface.ip_address_mask %}
+  {% set ns.untag = interface.untag %}
+  {% if ns.tags != '' %}
+    {% set ns.tags = ns.tags + ',' %}
+  {% endif %}
+  {% set ns.tags = ns.tags + interface.tagged_start %}
+  {% if interface.tagged_start != interface.tagged_end %}
+    {% set ns.tags = ns.tags + '-' + interface.tagged_end %}
+  {% endif %}
+  {% set ns.lacp_port = interface.lacp_port %}
 {% endfor %}

@@ -4,12 +4,15 @@ import xml.etree.ElementTree as ET
 import sys
 
 #======================================================
-# グローバル変数の定義
-#======================================================
 # コマンドライン引数
+# Usage: xml_to_csv.py [device ID] [XML file] [output directory path]
+#======================================================
 device_id = sys.argv[1]
 juniper_config_xml = sys.argv[2]
 output_directry    = sys.argv[3]
+#======================================================
+# グローバル変数の定義
+#======================================================
 
 # 出力するCSVファイルのパス
 system_csv_path    = output_directry + '/System.csv'

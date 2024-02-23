@@ -1,3 +1,8 @@
-{% for route in routing_options.static.route %}
-ip route {{ route.addr }} {{ route.mask }} {{ route.next_hop }}
+{% for route in Routing %}
+  {% if route.dest_mask == '24' %}
+    {% set mask = '255.255.255.0' %}
+  {% else %}
+    {% set mask = '255.255.255.0' %}
+  {% endif %}
+ip route {{ route.dest_ip }} {{ mask }} {{ route.gw }}
 {% endfor %}

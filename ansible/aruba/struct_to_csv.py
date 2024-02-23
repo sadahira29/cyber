@@ -1,6 +1,15 @@
 import csv
 import re
 import ipaddress
+import sys
+
+#======================================================
+# コマンドライン引数
+# Usage: struct_to_csv.py [device ID] [config struct file] [output directory path]
+#======================================================
+device_id = sys.argv[1]
+aruba_config = sys.argv[2]
+output_directry = sys.argv[3]
 
 #------------------------------------------------------
 # 関数の定義
@@ -31,7 +40,6 @@ def get_prefix_len(ip_address, subnet_mask):
 #------------------------------------------------------
 
 # outputするCSVファイルのパス
-output_directry    = './output/'
 system_csv_path    = output_directry + 'System_ar.csv'
 interface_csv_path = output_directry + 'Interface_ar.csv'
 routing_csv_path   = output_directry + 'Routing_ar.csv'
@@ -84,10 +92,6 @@ vlan_headers = [
 # メインの処理
 #------------------------------------------------------
 if __name__ == '__main__':
-    # コマンドライン引数から機器IDを取得
-    device_id = input('Enter a decice ID: ')
-    # 変換対象のaruba configのファイル名（パス）を取得
-    aruba_config = input("Enter the file name or path of aruba config: ")
     # arubaのconfigを読み込む
     with open(aruba_config, 'r', newline='') as file:
         # 1行ずつ読み込む

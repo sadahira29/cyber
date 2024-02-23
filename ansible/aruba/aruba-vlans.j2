@@ -1,26 +1,35 @@
-{% for vlan in vlans.vlan %}
-vlan {{ vlan.vlan_id }}
+{% set ns = namespace(tags='', untag='') %}
+{% for vlan in Vlan %}
+vlan {{ vlan.VlanID }}
    name "{{ vlan.name }}"
-  {% if vlan.tagged is defined %}
-   tagged {{ vlan.tagged }}
+  {% set ns.tags = '' %}
+  {% set ns.untag = '' %}
+  {% for interface in Interface %}
+    {% if interface.tagged_start <= vlan.VlanID and interface.tagged_end >= vlan.VlanID %}
+      {% if ns.tags != '' %}
+        {% set ns.tags = ns.tags + ',' %}
+      {% endif %}
+      {% set ns.tags = ns.tags + interface.port %}
+    {% endif %}
+    {% if interface.untag == vlan.VlanID %}
+      {% set ns.untag = interface.port %}
+    {% endif %}
+  {% endfor %}
+  {% if ns.untag != '' %}
+   untagged {{ ns.untag }}
   {% endif %}
-  {% if vlan.no_tagged is defined %}
-   no tagged {{ vlan.no_tagged }}
+  {% if ns.tags != '' %}
+   tagged {{ ns.tags }}
   {% endif %}
-  {% if vlan.untagged is defined %}
-   untagged {{ vlan.untagged }}
-  {% endif %}
-  {% if vlan.no_untagged is defined %}
-   no untagged {{ vlan.no_untagged }}
-  {% endif %}
-  {% if vlan.ip_address is defined %}
-   ip address {{ vlan.ip_address }} {{ vlan.mask }}
-  {% endif %}
-  {% if vlan.no_ip_address is defined %}
+  {% if vlan.ip_address != '' %}
+    {% if vlan.ip_address_mask == '24' %}
+      {% set mask = '255.255.255.0' %}
+    {% else %}
+      {% set mask = '255.255.255.0' %}
+    {% endif %}
+   ip address {{ vlan.ip_address }} {{ mask }}
+  {% else %}
    no ip address
   {% endif %}
    exit
 {% endfor %}
-{% if vlans.management_vlan is defined %}
-management-vlan {{ vlans.management_vlan }}
-{% endif %}

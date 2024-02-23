@@ -1,5 +1,5 @@
 <rpc-reply xmlns:junos="http://xml.juniper.net/junos/11.4R5/junos">
-    <configuration junos:commit-seconds="1634213137" junos:commit-localtime="2021-10-14 21:05:37 JST" junos:commit-user="root">
+    <configuration junos:commit-seconds="1637068882" junos:commit-localtime="2021-11-16 22:21:22 JST" junos:commit-user="root">
             <version>11.4R5.5</version>
             <system>
                 <host-name>HOSTNAME</host-name>
@@ -495,9 +495,9 @@
                     </unit>
                 </interface>
                 <interface>
-                    <name>me0</name>
+                    <name>vlan</name>
                     <unit>
-                        <name>0</name>
+                        <name>92</name>
                         <family>
                             <inet>
                                 <address>
@@ -516,31 +516,26 @@
                     <authorization>read-only</authorization>
                 </community>
             </snmp>
-            <routing-instances>
-                <instance>
-                    <name>mgmt_junos</name>
-                    <routing-options>
-                        <static>
-                            <route>
-                                <name>10.6.1.0/24</name>
-                                <next-hop>10.5.16.250</next-hop>
-                            </route>
-                            <route>
-                                <name>10.6.2.0/24</name>
-                                <next-hop>10.5.17.250</next-hop>
-                            </route>
-                            <route>
-                                <name>10.6.3.0/24</name>
-                                <next-hop>10.5.17.250</next-hop>
-                            </route>
-                            <route>
-                                <name>10.6.4.0/24</name>
-                                <next-hop>10.5.17.250</next-hop>
-                            </route>
-                        </static>
-                    </routing-options>
-                </instance>
-            </routing-instances>
+            <routing-options>
+                <static>
+                    <route>
+                        <name>10.6.1.0/24</name>
+                        <next-hop>10.5.16.250</next-hop>
+                    </route>
+                    <route>
+                        <name>10.6.2.0/24</name>
+                        <next-hop>10.5.17.250</next-hop>
+                    </route>
+                    <route>
+                        <name>10.6.3.0/24</name>
+                        <next-hop>10.5.17.250</next-hop>
+                    </route>
+                    <route>
+                        <name>10.6.4.0/24</name>
+                        <next-hop>10.5.17.250</next-hop>
+                    </route>
+                </static>
+            </routing-options>
             <vlans>
                 <vlan>
                     <name>vlan1</name>
@@ -666,6 +661,7 @@
                     <name>vlan92</name>
                     <description>VLAN 92 seg</description>
                     <vlan-id>92</vlan-id>
+                    <l3-interface>vlan.92</l3-interface>
                 </vlan>
             </vlans>
             <poe>
