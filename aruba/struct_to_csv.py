@@ -6,6 +6,25 @@ import ipaddress
 # 関数の定義
 #------------------------------------------------------
 
+# 機器IDを取得する関数
+def get_device_id():
+    # 入力された機器IDを取得
+    device_id = input('Enter a device ID: ')
+    # バリデーションチェック
+    while True:
+        if not device_id:  # 未入力の場合
+            print("Error: Device ID cannot be empty.")
+        else:
+            # 正規表現パターンを定義(半角英数字，ハイフン，アンダースコアのみを有効)
+            pattern = re.compile("^[a-zA-Z0-9_-]+$")
+            # 入力文字列がパターンに一致するか確認
+            if pattern.match(device_id):
+                break
+            else:
+                print("Error: Device ID can only contain alphanumeric characters, hyphens, and underscores. ")
+        device_id = input('Please enter a valid device ID again: ')
+    return device_id
+
 # リストからCSVに変換する関数
 def list_to_csv(csv_path, csv_headers, config_lists):
     with open(csv_path, 'w', newline='') as f:
@@ -85,7 +104,7 @@ vlan_headers = [
 #------------------------------------------------------
 if __name__ == '__main__':
     # コマンドライン引数から機器IDを取得
-    device_id = input('Enter a decice ID: ')
+    device_id = get_device_id()
     # 変換対象のaruba configのファイル名（パス）を取得
     aruba_config = input("Enter the file name or path of aruba config: ")
     # arubaのconfigを読み込む

@@ -267,7 +267,7 @@
                     <description>IF-13</description>
                     <ether-options>
                         <speed>
-                            <ethernet-1g/>
+                            <ethernet-5g/>
                         </speed>
                     </ether-options>
                     <unit>
