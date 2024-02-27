@@ -1,4 +1,5 @@
 import os
+import re
 import csv
 import xml.etree.ElementTree as ET
 
@@ -12,14 +13,14 @@ interface_csv_path = output_directry + 'Interface_ju.csv'
 routing_csv_path   = output_directry + 'Routing_ju.csv'
 vlan_csv_path      = output_directry + 'Vlan_ju.csv'
 
-# 抽出した config を保存しておくリスト
+# 抽出した configリスト を保存しておくリスト
 system_config    = []   # System
 interface_config = []   # Interface
 routing_config   = []   # Routing
 vlan_config      = []   # VLAN
 
 # システム情報のヘッダー
-system_headers    = [
+system_headers = [
     'hostname',         # ホスト名
     'deviceID'          # 機器ID（識別子）
 ]
@@ -61,6 +62,25 @@ device_id = ''
 #======================================================
 # 関数の定義
 #======================================================
+
+# 機器IDを取得する関数
+def get_device_id():
+    # 入力された機器IDを取得
+    device_id = input('Enter a device ID: ')
+    # バリデーションチェック
+    while True:
+        if not device_id:  # 未入力の場合
+            print("Error: Device ID cannot be empty.")
+        else:
+            # 正規表現パターンを定義(半角英数字，ハイフン，アンダースコアのみを有効)
+            pattern = re.compile("^[a-zA-Z0-9_-]+$")
+            # 入力文字列がパターンに一致するか確認
+            if pattern.match(device_id):
+                break
+            else:
+                print("Error: Device ID can only contain alphanumeric characters, hyphens, and underscores. ")
+        device_id = input('Please enter a valid device ID again: ')
+    return device_id
 
 # ファイル名を取得する関数
 def get_xml_file():
@@ -119,6 +139,10 @@ def extract_interface_config(root):
         speed_tag = interface.find('ether-options/speed')
         if speed_tag is not None:
             speed  = speed_tag[0].tag.split('-')[1]
+            if 'm' in speed:  # ○mの場合はそのまま
+                speed = speed.rstrip('m')
+            elif 'g' in speed:  # ○gの場合はx1000
+                speed = int(speed.rstrip('g')) * 1000
             duplex = 'full'  # full であると仮定
         # tag, untagの抽出（推測）
         switching_tag = interface.find('.//ethernet-switching')
@@ -135,7 +159,7 @@ def extract_interface_config(root):
                 # メンバ(vlan名)に対するvlan idを取得する
                 for member_name in member_names:
                     vlan_tags.append(get_vlan_id(member_name, vlans))
-        # ip adressの抽出（仮定）
+        # ip adressの抽出
         address_tag = interface.find('.//inet/address')
         if address_tag is not None:
             # CIDR表記のIPアドレスを'/'で宛先アドレスとマスクに分ける
@@ -178,8 +202,15 @@ def extract_vlan_config(root):
     for vlan in vlans:
         # 各変数の初期化（ループするたびに初期化する）
         vlan_id = vlan_desc = ip_address = subnet_mask = ''
-        vlan_id   = vlan.find('vlan-id').text
+        vlan_id = vlan.find('vlan-id').text
         vlan_desc = vlan.find('description').text
+        # ip adressの抽出
+        address_tag = vlan.find('.//inet/address')
+        if address_tag is not None:
+            # CIDR表記のIPアドレスを'/'で宛先アドレスとマスクに分ける
+            ip_adress_cidr = address_tag.find('name').text.split('/')
+            ip_address = ip_adress_cidr[0]
+            subnet_mask = ip_adress_cidr[1]
         # 抽出した config をヘッダーの順番に合わせてリスト化して追加
         vlan_config.append([device_id, vlan_id, vlan_desc, ip_address, subnet_mask])
 
@@ -193,7 +224,7 @@ def get_vlan_id(member_name, vlans):
 
 # リストからCSVに変換する関数
 def list_to_csv(csv_path, csv_headers, config_lists):
-    with open(csv_path, 'w', newline='') as f:
+    with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(csv_headers)
         # リストを1つずつCSVに変換し書き込む
@@ -205,7 +236,7 @@ def main():
     # グローバル変数の宣言
     global device_id
     # 入力された機器IDを取得
-    device_id = input('Enter the decice ID: ')
+    device_id = get_device_id()
     # 変換対象のjuniperのconfigのファイル名（パス）を取得
     juniper_config_xml = get_xml_file()
 
