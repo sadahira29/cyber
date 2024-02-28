@@ -2,52 +2,9 @@ import csv
 import re
 import ipaddress
 
-#------------------------------------------------------
-# 関数の定義
-#------------------------------------------------------
-
-# 機器IDを取得する関数
-def get_device_id():
-    # 入力された機器IDを取得
-    device_id = input('Enter a device ID: ')
-    # バリデーションチェック
-    while True:
-        if not device_id:  # 未入力の場合
-            print("Error: Device ID cannot be empty.")
-        else:
-            # 正規表現パターンを定義(半角英数字，ハイフン，アンダースコアのみを有効)
-            pattern = re.compile("^[a-zA-Z0-9_-]+$")
-            # 入力文字列がパターンに一致するか確認
-            if pattern.match(device_id):
-                break
-            else:
-                print("Error: Device ID can only contain alphanumeric characters, hyphens, and underscores. ")
-        device_id = input('Please enter a valid device ID again: ')
-    return device_id
-
-# リストからCSVに変換する関数
-def list_to_csv(csv_path, csv_headers, config_lists):
-    with open(csv_path, 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(csv_headers)
-        # リストを1つずつCSVに変換し書き込む
-        for config_list in config_lists:
-            writer.writerow(config_list)
-
-# サブネットマスクをプレフィックス長に変換する関数
-def get_prefix_len(ip_address, subnet_mask):
-    # IPv4アドレスオブジェクトを作成
-    address_obj = ipaddress.IPv4Address(ip_address)
-    # IPv4ネットワークオブジェクトを作成
-    network_obj = ipaddress.IPv4Network(f'{address_obj}/{subnet_mask}', strict=False)
-    # プレフィックス長を取得
-    prefix_len = network_obj.prefixlen
-    # プレフィックス長を返す
-    return prefix_len
-
-#------------------------------------------------------
+#======================================================
 # 変数の定義
-#------------------------------------------------------
+#======================================================
 
 # outputするCSVファイルのパス
 output_directry    = './output/'
@@ -99,10 +56,50 @@ vlan_headers = [
     'ip address mask'   # VLANのIPアドレスのサブネットマスク
 ]
 
-#------------------------------------------------------
-# メインの処理
-#------------------------------------------------------
-if __name__ == '__main__':
+#======================================================
+# 関数の定義
+#======================================================
+
+# 機器IDを取得する関数
+def get_device_id():
+    # 入力された機器IDを取得
+    device_id = input('Enter a device ID: ')
+    # バリデーションチェック
+    while True:
+        if not device_id:  # 未入力の場合
+            print("Error: Device ID cannot be empty.")
+        else:
+            # 正規表現パターンを定義(半角英数字，ハイフン，アンダースコアのみを有効)
+            pattern = re.compile("^[a-zA-Z0-9_-]+$")
+            # 入力文字列がパターンに一致するか確認
+            if pattern.match(device_id):
+                break
+            else:
+                print("Error: Device ID can only contain alphanumeric characters, hyphens, and underscores. ")
+        device_id = input('Please enter a valid device ID again: ')
+    return device_id
+
+# リストからCSVに変換する関数
+def list_to_csv(csv_path, csv_headers, config_lists):
+    with open(csv_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(csv_headers)
+        # リストを1つずつCSVに変換し書き込む
+        for config_list in config_lists:
+            writer.writerow(config_list)
+
+# サブネットマスクをプレフィックス長に変換する関数
+def get_prefix_len(ip_address, subnet_mask):
+    # IPv4アドレスオブジェクトを作成
+    address_obj = ipaddress.IPv4Address(ip_address)
+    # IPv4ネットワークオブジェクトを作成
+    network_obj = ipaddress.IPv4Network(f'{address_obj}/{subnet_mask}', strict=False)
+    # プレフィックス長を取得
+    prefix_len = network_obj.prefixlen
+    # プレフィックス長を返す
+    return prefix_len
+
+def main():
     # コマンドライン引数から機器IDを取得
     device_id = get_device_id()
     # 変換対象のaruba configのファイル名（パス）を取得
@@ -195,3 +192,9 @@ if __name__ == '__main__':
     list_to_csv(interface_csv_path, interface_headers, interface_config)  # Interface
     list_to_csv(vlan_csv_path, vlan_headers, vlan_config)                 # Vlan
     list_to_csv(routing_csv_path, routing_headers, routing_config)        # Routing
+
+#======================================================
+# プログラムの起点
+#======================================================
+if __name__ == '__main__':
+    main()
