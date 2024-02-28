@@ -1,5 +1,6 @@
 import csv
 import re
+import os
 import ipaddress
 
 #======================================================
@@ -79,6 +80,17 @@ def get_device_id():
         device_id = input('Please enter a valid device ID again: ')
     return device_id
 
+# ファイル名を取得する関数
+def get_aruba_conf():
+    file_name = input("Enter the file name or path of aruba config: ")
+    while True:
+        if os.path.exists(file_name):  # ファイルが存在するなら
+            break
+        else:  # 存在しないならもう一度入力させる
+            print(f'No such file or directory: "{file_name}"')
+            file_name = input("Enter the correct file name or path of aruba config: ")
+    return file_name
+
 # リストからCSVに変換する関数
 def list_to_csv(csv_path, csv_headers, config_lists):
     with open(csv_path, 'w', newline='') as f:
@@ -103,9 +115,9 @@ def main():
     # コマンドライン引数から機器IDを取得
     device_id = get_device_id()
     # 変換対象のaruba configのファイル名（パス）を取得
-    aruba_config = input("Enter the file name or path of aruba config: ")
+    aruba_config = get_aruba_conf()
     # arubaのconfigを読み込む
-    with open(aruba_config, 'r', newline='') as file:
+    with open(aruba_config, 'r', newline='', encoding="utf-8") as file:
         # 1行ずつ読み込む
         for line in file:
             # 両端の空白や改行行字を取り除く
