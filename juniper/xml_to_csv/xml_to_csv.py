@@ -84,14 +84,18 @@ def get_device_id():
 
 # ファイル名を取得する関数
 def get_xml_file():
+    file_name = input("Enter the file name of juniper config (.xml): ")
     while True:
-        file_name = input("Enter the file name of juniper config (.xml): ")
         _, file_extension = os.path.splitext(file_name)
         # 拡張子が ".xml" でない場合の処理
         if file_extension != ".xml":
-            print("Error: The file extension is not .xml. Please enter the file with .xml extension.")
-        else:
+            print(f'Error: The file extension is not .xml: "{file_name}"')
+            file_name = input("Please enter the file with .xml extension: ")
+        elif os.path.exists(file_name):
             break
+        else:
+            print(f'No such file or directory: "{file_name}"')
+            file_name = input("Enter the correct file name or path of aruba config: ")
     return file_name
 
 # System(管理情報)の config を抽出する関数
