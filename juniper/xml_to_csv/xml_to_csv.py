@@ -208,13 +208,23 @@ def extract_vlan_config(root):
         vlan_id = vlan_desc = ip_address = subnet_mask = ''
         vlan_id = vlan.find('vlan-id').text
         vlan_desc = vlan.find('description').text
-        # ip adressの抽出
+        # ip adressの抽出（仮）
         address_tag = vlan.find('.//inet/address')
         if address_tag is not None:
             # CIDR表記のIPアドレスを'/'で宛先アドレスとマスクに分ける
             ip_adress_cidr = address_tag.find('name').text.split('/')
             ip_address = ip_adress_cidr[0]
             subnet_mask = ip_adress_cidr[1]
+        # SSH用のIPアドレス
+        l3_interface = vlan.find('l3-interface')
+        if l3_interface is not None:
+            IF_name, unit = l3_interface.text.split('.')
+            interfaces = root.findall('.//interfaces/interface')
+            for interface in interfaces:
+                # 2つの値が一致するならIPアドレスを取得
+                if IF_name == interface.find('name').text and unit == interface.find('unit/name').text:
+                    ip_address, subnet_mask = interface.find('unit/family/inet/address/name').text.split('/')
+
         # 抽出した config をヘッダーの順番に合わせてリスト化して追加
         vlan_config.append([device_id, vlan_id, vlan_desc, ip_address, subnet_mask])
 
