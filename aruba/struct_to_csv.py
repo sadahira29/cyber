@@ -91,31 +91,7 @@ def get_aruba_conf():
             file_name = input("Enter the correct file name or path of aruba config: ")
     return file_name
 
-# リストからCSVに変換する関数
-def list_to_csv(csv_path, csv_headers, config_lists):
-    with open(csv_path, 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(csv_headers)
-        # リストを1つずつCSVに変換し書き込む
-        for config_list in config_lists:
-            writer.writerow(config_list)
-
-# サブネットマスクをプレフィックス長に変換する関数
-def get_prefix_len(ip_address, subnet_mask):
-    # IPv4アドレスオブジェクトを作成
-    address_obj = ipaddress.IPv4Address(ip_address)
-    # IPv4ネットワークオブジェクトを作成
-    network_obj = ipaddress.IPv4Network(f'{address_obj}/{subnet_mask}', strict=False)
-    # プレフィックス長を取得
-    prefix_len = network_obj.prefixlen
-    # プレフィックス長を返す
-    return prefix_len
-
-def main():
-    # コマンドライン引数から機器IDを取得
-    device_id = get_device_id()
-    # 変換対象のaruba configのファイル名（パス）を取得
-    aruba_config = get_aruba_conf()
+def extract_config(aruba_config, device_id):
     # arubaのconfigを読み込む
     with open(aruba_config, 'r', newline='', encoding="utf-8") as file:
         # 1行ずつ読み込む
@@ -199,6 +175,33 @@ def main():
                 # 抽出した config をヘッダの順番に合わせてリスト化して追加
                 routing_config.append([device_id, dest_ip, prefix_len, gateway, metric])
 
+# リストからCSVに変換する関数
+def list_to_csv(csv_path, csv_headers, config_lists):
+    with open(csv_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(csv_headers)
+        # リストを1つずつCSVに変換し書き込む
+        for config_list in config_lists:
+            writer.writerow(config_list)
+
+# サブネットマスクをプレフィックス長に変換する関数
+def get_prefix_len(ip_address, subnet_mask):
+    # IPv4アドレスオブジェクトを作成
+    address_obj = ipaddress.IPv4Address(ip_address)
+    # IPv4ネットワークオブジェクトを作成
+    network_obj = ipaddress.IPv4Network(f'{address_obj}/{subnet_mask}', strict=False)
+    # プレフィックス長を取得
+    prefix_len = network_obj.prefixlen
+    # プレフィックス長を返す
+    return prefix_len
+
+def main():
+    # コマンドライン引数から機器IDを取得
+    device_id = get_device_id()
+    # 変換対象のaruba configのファイル名（パス）を取得
+    aruba_config = get_aruba_conf()
+    # arubaのconfigを読み込み、各項目の必要なconfigを抽出する
+    extract_config(aruba_config, device_id)
     # 抽出した各Configuration をCSVに変換する
     list_to_csv(system_csv_path, system_headers, system_config)           # System
     list_to_csv(interface_csv_path, interface_headers, interface_config)  # Interface
