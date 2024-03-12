@@ -112,26 +112,24 @@ def extract_system_config(root):
 # Interfaceの config 抽出する関数
 def extract_interface_config(root):
     global interface_config
-    # XPathでinterfacesタグを検索
-    XPath = './/interfaces/interface'
-    # 子ノードのinterfaceタグをすべて取得
-    interfaces = root.findall(XPath)
+    # interfaceタグをすべて取得
+    interfaces = root.findall('.//interfaces/interface')
     # interfaceタグ内の必要な設定を抽出して１つのリストに格納し、
     # そのリストを1つずつinterface_configに格納する
     for interface in interfaces:
         # 各変数の初期化（ループするたびに初期化する）
         name = port = speed = duplex = negotiation = ip_address = subnet_mask = untag = tag_start = tag_end = lacp_port = ''
-        # 複数タグを保存するリスト
+        # 複数のタグVlanを保存するリスト
         vlan_tags = []
 
         # interface名からポート番号を抽出
         interface_name = interface.find('name').text.split('/')
         interface_type = interface_name[0]
         if interface_type.startswith('ge'):
-            # juniperではポート番号から０から始まるので
+            # juniperではポート番号が０から始まるので
             # arubaに合わせるために＋１している
             port = int(interface_name[2]) + 1
-        else:  # me0 はとりあえず無視している
+        else:  # geタイプ以外はとりあえず無視する
             continue
 
         # description の抽出
@@ -167,9 +165,7 @@ def extract_interface_config(root):
         address_tag = interface.find('.//inet/address')
         if address_tag is not None:
             # CIDR表記のIPアドレスを'/'で宛先アドレスとマスクに分ける
-            ip_adress_cidr = address_tag.find('name').text.split('/')
-            ip_address = ip_adress_cidr[0]
-            subnet_mask = ip_adress_cidr[1]
+            ip_address, subnet_mask = address_tag.find('name').text.split('/')
         # tagの割り当てと interface_config への格納
         if vlan_tags:
             for vlan_tag in vlan_tags:
@@ -185,15 +181,12 @@ def extract_interface_config(root):
 def extract_routing_config(root):
     global routing_config
     # routeタグの子ノードをすべて抽出
-    XPath = './/routing-options/static/route'
-    routes = root.findall(XPath)
+    routes = root.findall('.//routing-options/static/route')
     for route in routes:
         # 各変数の初期化（ループするたびに初期化する）
         dest_ip = dest_mask = gateway = metric = ''
         # CIDR表記のIPアドレスを'/'で宛先アドレスとマスクに分ける
-        ip_adress_cidr = route.find('name').text.split('/')
-        dest_ip = ip_adress_cidr[0]
-        dest_mask = ip_adress_cidr[1]
+        dest_ip, dest_mask = route.find('name').text.split('/')
         gateway = route.find('next-hop').text
         # 抽出した config をヘッダーの順番に合わせてリスト化して追加
         routing_config.append([device_id, dest_ip, dest_mask, gateway, metric])
@@ -201,8 +194,7 @@ def extract_routing_config(root):
 # Vlan の config 抽出する関数
 def extract_vlan_config(root):
     # vlanタグの子ノードをすべて抽出
-    XPath = './/vlans/vlan'
-    vlans = root.findall(XPath)
+    vlans = root.findall('.//vlans/vlan')
     for vlan in vlans:
         # 各変数の初期化（ループするたびに初期化する）
         vlan_id = vlan_desc = ip_address = subnet_mask = ''
@@ -212,9 +204,7 @@ def extract_vlan_config(root):
         address_tag = vlan.find('.//inet/address')
         if address_tag is not None:
             # CIDR表記のIPアドレスを'/'で宛先アドレスとマスクに分ける
-            ip_adress_cidr = address_tag.find('name').text.split('/')
-            ip_address = ip_adress_cidr[0]
-            subnet_mask = ip_adress_cidr[1]
+            ip_address, subnet_mask = address_tag.find('name').text.split('/')
         # SSH用のIPアドレス
         l3_interface = vlan.find('l3-interface')
         if l3_interface is not None:
