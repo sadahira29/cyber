@@ -6,8 +6,12 @@ interface {{ ns.port }}
       {% if ns.name != ''%}
    name "{{ ns.name }}"
       {% endif %}
-      {% if ns.duplex != ''%}
-   speed-duplex {{ ns.duplex }}
+      {% if ns.speed != '' or ns.duplex != ''%}
+        {% if ns.speed != ''%}
+   speed-duplex {{ ns.speed | regex_replace('m','') }}-{{ ns.duplex }}
+           {% else %}
+   speed-duplex 100-{{ ns.duplex }}
+        {% endif %}
       {% endif %}
       {% if ns.tags != ''%}
    tagged vlan {{ ns.tags }}

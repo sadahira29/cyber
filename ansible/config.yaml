@@ -975,5 +975,5 @@ Vlan:
 - deviceID: test
   VlanID: '92'
   name: VLAN 92 seg
-  ip_address: ''
-  ip_address_mask: ''
+  ip_address: 192.168.66.88
+  ip_address_mask: '24'

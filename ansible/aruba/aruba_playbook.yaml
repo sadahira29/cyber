@@ -8,5 +8,5 @@
   - name: 'template'
     template:
       src: aruba.j2
-      dest: "{{ fname }}_aruba_conf.txt"
+      dest: "aruba_conf.txt"
       lstrip_blocks: yes
