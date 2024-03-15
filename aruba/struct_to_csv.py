@@ -1,34 +1,11 @@
 import csv
 import re
+import os
 import ipaddress
 
-#------------------------------------------------------
-# 関数の定義
-#------------------------------------------------------
-
-# リストからCSVに変換する関数
-def list_to_csv(csv_path, csv_headers, config_lists):
-    with open(csv_path, 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(csv_headers)
-        # リストを1つずつCSVに変換し書き込む
-        for config_list in config_lists:
-            writer.writerow(config_list)
-
-# サブネットマスクをプレフィックス長に変換する関数
-def get_prefix_len(ip_address, subnet_mask):
-    # IPv4アドレスオブジェクトを作成
-    address_obj = ipaddress.IPv4Address(ip_address)
-    # IPv4ネットワークオブジェクトを作成
-    network_obj = ipaddress.IPv4Network(f'{address_obj}/{subnet_mask}', strict=False)
-    # プレフィックス長を取得
-    prefix_len = network_obj.prefixlen
-    # プレフィックス長を返す
-    return prefix_len
-
-#------------------------------------------------------
+#======================================================
 # 変数の定義
-#------------------------------------------------------
+#======================================================
 
 # outputするCSVファイルのパス
 output_directry    = './output/'
@@ -80,16 +57,43 @@ vlan_headers = [
     'ip address mask'   # VLANのIPアドレスのサブネットマスク
 ]
 
-#------------------------------------------------------
-# メインの処理
-#------------------------------------------------------
-if __name__ == '__main__':
-    # コマンドライン引数から機器IDを取得
-    device_id = input('Enter a decice ID: ')
-    # 変換対象のaruba configのファイル名（パス）を取得
-    aruba_config = input("Enter the file name or path of aruba config: ")
+#======================================================
+# 関数の定義
+#======================================================
+
+# 機器IDを取得する関数
+def get_device_id():
+    # 入力された機器IDを取得
+    device_id = input('Enter a device ID: ')
+    # バリデーションチェック
+    while True:
+        if not device_id:  # 未入力の場合
+            print("Error: Device ID cannot be empty.")
+        else:
+            # 正規表現パターンを定義(半角英数字，ハイフン，アンダースコアのみを有効)
+            pattern = re.compile("^[a-zA-Z0-9_-]+$")
+            # 入力文字列がパターンに一致するか確認
+            if pattern.match(device_id):
+                break
+            else:
+                print("Error: Device ID can only contain alphanumeric characters, hyphens, and underscores. ")
+        device_id = input('Please enter a valid device ID again: ')
+    return device_id
+
+# ファイル名を取得する関数
+def get_aruba_conf():
+    file_name = input("Enter the file name or path of aruba config: ")
+    while True:
+        if os.path.exists(file_name):  # ファイルが存在するなら
+            break
+        else:  # 存在しないならもう一度入力させる
+            print(f'No such file or directory: "{file_name}"')
+            file_name = input("Enter the correct file name or path of aruba config: ")
+    return file_name
+
+def extract_config(aruba_config, device_id):
     # arubaのconfigを読み込む
-    with open(aruba_config, 'r', newline='') as file:
+    with open(aruba_config, 'r', newline='', encoding="utf-8") as file:
         # 1行ずつ読み込む
         for line in file:
             # 両端の空白や改行行字を取り除く
@@ -171,8 +175,41 @@ if __name__ == '__main__':
                 # 抽出した config をヘッダの順番に合わせてリスト化して追加
                 routing_config.append([device_id, dest_ip, prefix_len, gateway, metric])
 
+# リストからCSVに変換する関数
+def list_to_csv(csv_path, csv_headers, config_lists):
+    with open(csv_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(csv_headers)
+        # リストを1つずつCSVに変換し書き込む
+        for config_list in config_lists:
+            writer.writerow(config_list)
+
+# サブネットマスクをプレフィックス長に変換する関数
+def get_prefix_len(ip_address, subnet_mask):
+    # IPv4アドレスオブジェクトを作成
+    address_obj = ipaddress.IPv4Address(ip_address)
+    # IPv4ネットワークオブジェクトを作成
+    network_obj = ipaddress.IPv4Network(f'{address_obj}/{subnet_mask}', strict=False)
+    # プレフィックス長を取得
+    prefix_len = network_obj.prefixlen
+    # プレフィックス長を返す
+    return prefix_len
+
+def main():
+    # コマンドライン引数から機器IDを取得
+    device_id = get_device_id()
+    # 変換対象のaruba configのファイル名（パス）を取得
+    aruba_config = get_aruba_conf()
+    # arubaのconfigを読み込み、各項目の必要なconfigを抽出する
+    extract_config(aruba_config, device_id)
     # 抽出した各Configuration をCSVに変換する
     list_to_csv(system_csv_path, system_headers, system_config)           # System
     list_to_csv(interface_csv_path, interface_headers, interface_config)  # Interface
     list_to_csv(vlan_csv_path, vlan_headers, vlan_config)                 # Vlan
     list_to_csv(routing_csv_path, routing_headers, routing_config)        # Routing
+
+#======================================================
+# プログラムの起点
+#======================================================
+if __name__ == '__main__':
+    main()
