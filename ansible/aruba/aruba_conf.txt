@@ -147,7 +147,7 @@ vlan 92
    name "VLAN 92 seg"
    untagged 23
    tagged 1
-   ip address 192.168.66.88 255.255.255.0
+   ip address 10.5.17.194 255.255.248.0
    exit
 interface 1
    name "IF-1"

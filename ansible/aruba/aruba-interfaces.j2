@@ -13,7 +13,11 @@ interface {{ ns.port }}
    speed-duplex 100-{{ ns.duplex }}
         {% endif %}
       {% endif %}
-      {% if ns.tags != ''%}
+      {% if ns.ip_address != '' %}
+        {% set mask = ('0.0.0.0/'~ns.ip_address_mask) | ipaddr('netmask') %}
+   ip address {{ ns.ip_address }} {{ mask }}
+  {% endif %}
+     {% if ns.tags != ''%}
    tagged vlan {{ ns.tags }}
         {% set ns.tags = ''%}
       {% endif %}

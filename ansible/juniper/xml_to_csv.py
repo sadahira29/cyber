@@ -150,15 +150,12 @@ def extract_interface_config(root):
 def extract_routing_config(root):
     global routing_config
     # routeタグの子ノードをすべて抽出
-    XPath = './/routing-options/static/route'
-    routes = root.findall(XPath)
+    routes = root.findall('.//routing-options/static/route')
     for route in routes:
         # 各変数の初期化（ループするたびに初期化する）
         dest_ip = dest_mask = gateway = metric = ''
         # CIDR表記のIPアドレスを'/'で宛先アドレスとマスクに分ける
-        ip_adress_cidr = route.find('name').text.split('/')
-        dest_ip = ip_adress_cidr[0]
-        dest_mask = ip_adress_cidr[1]
+        dest_ip, dest_mask = route.find('name').text.split('/')
         gateway = route.find('next-hop').text
         # 抽出した config をヘッダーの順番に合わせてリスト化して追加
         routing_config.append([device_id, dest_ip, dest_mask, gateway, metric])
@@ -166,16 +163,30 @@ def extract_routing_config(root):
 # Vlan の config 抽出する関数
 def extract_vlan_config(root):
     # vlanタグの子ノードをすべて抽出
-    XPath = './/vlans/vlan'
-    vlans = root.findall(XPath)
+    vlans = root.findall('.//vlans/vlan')
     for vlan in vlans:
         # 各変数の初期化（ループするたびに初期化する）
         vlan_id = vlan_desc = ip_address = subnet_mask = ''
-        vlan_id   = vlan.find('vlan-id').text
+        vlan_id = vlan.find('vlan-id').text
         vlan_desc = vlan.find('description').text
+        # ip adressの抽出（仮）
+        address_tag = vlan.find('.//inet/address')
+        if address_tag is not None:
+            # CIDR表記のIPアドレスを'/'で宛先アドレスとマスクに分ける
+            ip_address, subnet_mask = address_tag.find('name').text.split('/')
+        # SSH用のIPアドレス
+        l3_interface = vlan.find('l3-interface')
+        if l3_interface is not None:
+            IF_name, unit = l3_interface.text.split('.')
+            interfaces = root.findall('.//interfaces/interface')
+            for interface in interfaces:
+                # 2つの値が一致するならIPアドレスを取得
+                if IF_name == interface.find('name').text and unit == interface.find('unit/name').text:
+                    ip_address, subnet_mask = interface.find('unit/family/inet/address/name').text.split('/')
+
         # 抽出した config をヘッダーの順番に合わせてリスト化して追加
         vlan_config.append([device_id, vlan_id, vlan_desc, ip_address, subnet_mask])
-
+        
 # メンバ名（vlan名）と一致するvlan idを取得する関数
 def get_vlan_id(member_name, vlans):
     for vlan in vlans:

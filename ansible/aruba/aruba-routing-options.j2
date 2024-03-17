@@ -1,8 +1,4 @@
 {% for route in Routing %}
-  {% if route.dest_mask == '24' %}
-    {% set mask = '255.255.255.0' %}
-  {% else %}
-    {% set mask = '255.255.255.0' %}
-  {% endif %}
+  {% set mask = ('0.0.0.0/'~route.dest_mask) | ipaddr('netmask') %}
 ip route {{ route.dest_ip }} {{ mask }} {{ route.gw }}
 {% endfor %}

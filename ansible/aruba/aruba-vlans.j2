@@ -22,11 +22,7 @@ vlan {{ vlan.VlanID }}
    tagged {{ ns.tags }}
   {% endif %}
   {% if vlan.ip_address != '' %}
-    {% if vlan.ip_address_mask == '24' %}
-      {% set mask = '255.255.255.0' %}
-    {% else %}
-      {% set mask = '255.255.255.0' %}
-    {% endif %}
+    {% set mask = ('0.0.0.0/'~vlan.ip_address_mask) | ipaddr('netmask') %}
    ip address {{ vlan.ip_address }} {{ mask }}
   {% else %}
    no ip address
